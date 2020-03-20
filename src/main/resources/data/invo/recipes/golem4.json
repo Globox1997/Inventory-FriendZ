@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ded",
+        "fff",
+        "dfd"
+    ],
+    "key": {
+        "d": {
+            "item": "invo:blueemerald"
+        },
+        "e": {
+            "item": "minecraft:water_bucket"
+        },
+        "f": {
+            "item": "minecraft:iron_ingot"
+        }
+    },
+    "result": {
+        "item": "invo:golem4"
+    }
+}
