@@ -21,6 +21,7 @@ public class friends implements ModInitializer {
     public static final golem6 GOLEM6 = new golem6(new Item.Settings());
     public static final blueemerald BLUEEMERALD = new blueemerald(new Item.Settings());
     public static final bluemagma BLUEMAGMA = new bluemagma(new Item.Settings());
+    public static final blueshard BLUESHARD = new blueshard(new Item.Settings());
 
     public static final ItemGroup invo_GROUP = FabricItemGroupBuilder.create(new Identifier("invo", "friends"))
             .icon(() -> new ItemStack(friends.GOLEM1)).appendItems(stacks -> {
@@ -32,7 +33,7 @@ public class friends implements ModInitializer {
                 stacks.add(new ItemStack(friends.GOLEM6));
                 stacks.add(new ItemStack(friends.BLUEEMERALD));
                 stacks.add(new ItemStack(friends.BLUEMAGMA));
-                stacks.add(ItemStack.EMPTY);
+                stacks.add(new ItemStack(friends.BLUESHARD));
 
             }).build();
 
@@ -47,6 +48,7 @@ public class friends implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("invo", "golem6"), GOLEM6);
         Registry.register(Registry.ITEM, new Identifier("invo", "blueemerald"), BLUEEMERALD);
         Registry.register(Registry.ITEM, new Identifier("invo", "bluemagma"), BLUEMAGMA);
+        Registry.register(Registry.ITEM, new Identifier("invo", "blueshard"), BLUESHARD);
 
     }
 
