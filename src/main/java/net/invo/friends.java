@@ -13,12 +13,12 @@ import net.minecraft.util.registry.Registry;
 
 public class friends implements ModInitializer {
 
-    public static final golem1 GOLEM1 = new golem1(new Item.Settings());
-    public static final golem2 GOLEM2 = new golem2(new Item.Settings());
-    public static final golem3 GOLEM3 = new golem3(new Item.Settings());
-    public static final golem4 GOLEM4 = new golem4(new Item.Settings());
-    public static final golem5 GOLEM5 = new golem5(new Item.Settings());
-    public static final golem6 GOLEM6 = new golem6(new Item.Settings());
+    public static final golem1 GOLEM1 = new golem1(new Item.Settings().maxCount(1));
+    public static final golem2 GOLEM2 = new golem2(new Item.Settings().maxCount(1));
+    public static final golem3 GOLEM3 = new golem3(new Item.Settings().maxCount(1));
+    public static final golem4 GOLEM4 = new golem4(new Item.Settings().maxCount(1));
+    public static final golem5 GOLEM5 = new golem5(new Item.Settings().maxCount(1));
+    public static final golem6 GOLEM6 = new golem6(new Item.Settings().maxCount(1));
     public static final blueemerald BLUEEMERALD = new blueemerald(new Item.Settings());
     public static final bluemagma BLUEMAGMA = new bluemagma(new Item.Settings());
     public static final blueshard BLUESHARD = new blueshard(new Item.Settings());
