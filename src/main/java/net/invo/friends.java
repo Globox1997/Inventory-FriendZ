@@ -22,6 +22,9 @@ public class friends implements ModInitializer {
     public static final blueemerald BLUEEMERALD = new blueemerald(new Item.Settings());
     public static final bluemagma BLUEMAGMA = new bluemagma(new Item.Settings());
     public static final blueshard BLUESHARD = new blueshard(new Item.Settings());
+    public static final bluefeather BLUEFEATHER = new bluefeather(new Item.Settings());
+    public static final blueingot BLUEINGOT = new blueingot(new Item.Settings());
+    public static final bluequartz BLUEQUARTZ = new bluequartz(new Item.Settings());
 
     public static final ItemGroup invo_GROUP = FabricItemGroupBuilder.create(new Identifier("invo", "friends"))
             .icon(() -> new ItemStack(friends.GOLEM1)).appendItems(stacks -> {
@@ -31,9 +34,15 @@ public class friends implements ModInitializer {
                 stacks.add(new ItemStack(friends.GOLEM4));
                 stacks.add(new ItemStack(friends.GOLEM5));
                 stacks.add(new ItemStack(friends.GOLEM6));
-                stacks.add(new ItemStack(friends.BLUEEMERALD));
+                stacks.add(ItemStack.EMPTY);
+                stacks.add(ItemStack.EMPTY);
+                stacks.add(ItemStack.EMPTY);
+                stacks.add(new ItemStack(friends.BLUEINGOT));
                 stacks.add(new ItemStack(friends.BLUEMAGMA));
+                stacks.add(new ItemStack(friends.BLUEFEATHER));
                 stacks.add(new ItemStack(friends.BLUESHARD));
+                stacks.add(new ItemStack(friends.BLUEEMERALD));
+                stacks.add(new ItemStack(friends.BLUEQUARTZ));
 
             }).build();
 
@@ -49,6 +58,9 @@ public class friends implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("invo", "blueemerald"), BLUEEMERALD);
         Registry.register(Registry.ITEM, new Identifier("invo", "bluemagma"), BLUEMAGMA);
         Registry.register(Registry.ITEM, new Identifier("invo", "blueshard"), BLUESHARD);
+        Registry.register(Registry.ITEM, new Identifier("invo", "bluefeather"), BLUEFEATHER);
+        Registry.register(Registry.ITEM, new Identifier("invo", "bluequartz"), BLUEQUARTZ);
+        Registry.register(Registry.ITEM, new Identifier("invo", "blueingot"), BLUEINGOT);
 
     }
 

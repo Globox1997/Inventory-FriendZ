@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " d ",
+        "ded",
+        " d "
+    ],
+    "key": {
+        "d": {
+            "item": "minecraft:diamond"
+        },
+        "e": {
+            "item": "minecraft:quartz"
+        }
+    },
+    "result": {
+        "item": "invo:bluequartz"
+    }
+}
