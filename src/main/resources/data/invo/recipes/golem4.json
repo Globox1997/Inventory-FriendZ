@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shaped",
     "pattern": [
         "ded",
-        "fff",
+        "fof",
         "dfd"
     ],
     "key": {
@@ -14,6 +14,9 @@
         },
         "f": {
             "item": "minecraft:iron_ingot"
+        },
+        "o": {
+            "item": "minecraft:nether_star"
         }
     },
     "result": {
