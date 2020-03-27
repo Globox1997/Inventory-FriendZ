@@ -1,66 +1,58 @@
 package net.invo;
 
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import me.sargunvohra.mcmods.autoconfig1u.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.invo.dudes.*;
-import net.invo.items.*;
-import net.minecraft.item.Item;
+import net.invo.config.friendconfig;
+import net.invo.inits.iteminit;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class friends implements ModInitializer {
+    public static friendconfig FRIENDCONFIG = AutoConfig.register(friendconfig.class, GsonConfigSerializer::new)
+            .getConfig();
 
-    public static final golem1 GOLEM1 = new golem1(new Item.Settings().maxCount(1));
-    public static final golem2 GOLEM2 = new golem2(new Item.Settings().maxCount(1));
-    public static final golem3 GOLEM3 = new golem3(new Item.Settings().maxCount(1));
-    public static final golem4 GOLEM4 = new golem4(new Item.Settings().maxCount(1));
-    public static final golem5 GOLEM5 = new golem5(new Item.Settings().maxCount(1));
-    public static final golem6 GOLEM6 = new golem6(new Item.Settings().maxCount(1));
-    public static final blueemerald BLUEEMERALD = new blueemerald(new Item.Settings());
-    public static final bluemagma BLUEMAGMA = new bluemagma(new Item.Settings());
-    public static final blueshard BLUESHARD = new blueshard(new Item.Settings());
-    public static final bluefeather BLUEFEATHER = new bluefeather(new Item.Settings());
-    public static final blueingot BLUEINGOT = new blueingot(new Item.Settings());
-    public static final bluequartz BLUEQUARTZ = new bluequartz(new Item.Settings());
+    public static final Identifier SLEEP = new Identifier("invo:sleep");
+    public static SoundEvent SLEEPEVENT = new SoundEvent(SLEEP);
 
     public static final ItemGroup invo_GROUP = FabricItemGroupBuilder.create(new Identifier("invo", "friends"))
-            .icon(() -> new ItemStack(friends.GOLEM1)).appendItems(stacks -> {
-                stacks.add(new ItemStack(friends.GOLEM1));
-                stacks.add(new ItemStack(friends.GOLEM2));
-                stacks.add(new ItemStack(friends.GOLEM3));
-                stacks.add(new ItemStack(friends.GOLEM4));
-                stacks.add(new ItemStack(friends.GOLEM5));
-                stacks.add(new ItemStack(friends.GOLEM6));
+            .icon(() -> new ItemStack(iteminit.GOLEM1)).appendItems(stacks -> {
+                stacks.add(new ItemStack(iteminit.GOLEM1));
+                stacks.add(new ItemStack(iteminit.GOLEM2));
+                stacks.add(new ItemStack(iteminit.GOLEM3));
+                stacks.add(new ItemStack(iteminit.GOLEM4));
+                stacks.add(new ItemStack(iteminit.GOLEM5));
+                stacks.add(new ItemStack(iteminit.GOLEM6));
                 stacks.add(ItemStack.EMPTY);
                 stacks.add(ItemStack.EMPTY);
                 stacks.add(ItemStack.EMPTY);
-                stacks.add(new ItemStack(friends.BLUEINGOT));
-                stacks.add(new ItemStack(friends.BLUEMAGMA));
-                stacks.add(new ItemStack(friends.BLUEFEATHER));
-                stacks.add(new ItemStack(friends.BLUESHARD));
-                stacks.add(new ItemStack(friends.BLUEEMERALD));
-                stacks.add(new ItemStack(friends.BLUEQUARTZ));
+                stacks.add(new ItemStack(iteminit.PILLAGER2));
+                stacks.add(new ItemStack(iteminit.PILLAGER5));
+                stacks.add(new ItemStack(iteminit.PILLAGER1));
+                stacks.add(new ItemStack(iteminit.PILLAGER3));
+                stacks.add(new ItemStack(iteminit.PILLAGER4));
+                stacks.add(ItemStack.EMPTY);
+                stacks.add(ItemStack.EMPTY);
+                stacks.add(ItemStack.EMPTY);
+                stacks.add(ItemStack.EMPTY);
+                stacks.add(new ItemStack(iteminit.BLUEINGOT));
+                stacks.add(new ItemStack(iteminit.BLUEMAGMA));
+                stacks.add(new ItemStack(iteminit.BLUEFEATHER));
+                stacks.add(new ItemStack(iteminit.BLUESHARD));
+                stacks.add(new ItemStack(iteminit.BLUEEMERALD));
+                stacks.add(new ItemStack(iteminit.BLUEQUARTZ));
 
             }).build();
 
     @Override
     public void onInitialize() {
-
-        Registry.register(Registry.ITEM, new Identifier("invo", "golem1"), GOLEM1);
-        Registry.register(Registry.ITEM, new Identifier("invo", "golem2"), GOLEM2);
-        Registry.register(Registry.ITEM, new Identifier("invo", "golem3"), GOLEM3);
-        Registry.register(Registry.ITEM, new Identifier("invo", "golem4"), GOLEM4);
-        Registry.register(Registry.ITEM, new Identifier("invo", "golem5"), GOLEM5);
-        Registry.register(Registry.ITEM, new Identifier("invo", "golem6"), GOLEM6);
-        Registry.register(Registry.ITEM, new Identifier("invo", "blueemerald"), BLUEEMERALD);
-        Registry.register(Registry.ITEM, new Identifier("invo", "bluemagma"), BLUEMAGMA);
-        Registry.register(Registry.ITEM, new Identifier("invo", "blueshard"), BLUESHARD);
-        Registry.register(Registry.ITEM, new Identifier("invo", "bluefeather"), BLUEFEATHER);
-        Registry.register(Registry.ITEM, new Identifier("invo", "bluequartz"), BLUEQUARTZ);
-        Registry.register(Registry.ITEM, new Identifier("invo", "blueingot"), BLUEINGOT);
+        Registry.register(Registry.SOUND_EVENT, friends.SLEEP, SLEEPEVENT);
+        AutoConfig.getConfigHolder(friendconfig.class).getConfig();
+        iteminit.init();
 
     }
 

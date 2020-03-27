@@ -1,0 +1,14 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "invo:item/pillager4"
+    },
+	    "overrides": [
+        {
+            "predicate": {
+                "sleep": 1
+            },
+            "model": "invo:item/pillagersleep"
+        }
+    ]
+}

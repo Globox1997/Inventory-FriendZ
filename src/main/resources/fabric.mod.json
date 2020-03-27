@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "invo",
-  "version": "1.3.0",
+  "version": "1.4.0",
 
   "name": "Inventory Friends",
   "description": "Some Friends for your Inventory",
@@ -20,6 +20,12 @@
   "entrypoints": {
     "main": [
       "net.invo.friends"
+    ],
+    "modmenu": [
+      "net.invo.config.modmenu"
+    ],
+    "client": [
+      "net.invo.friendsclient"
     ]
   },
   "mixins": [

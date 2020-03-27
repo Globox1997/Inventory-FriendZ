@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ded",
+        "fof",
+        "dfd"
+    ],
+    "key": {
+        "d": {
+            "item": "minecraft:nautilus_shell"
+        },
+        "e": {
+            "item": "minecraft:carved_pumpkin"
+        },
+        "f": {
+            "item": "minecraft:netherite_ingot"
+        },
+        "o": {
+            "item": "minecraft:conduit"
+        }
+    },
+    "result": {
+        "item": "invo:pillager4"
+    }
+}
