@@ -2,5 +2,31 @@
     "parent": "item/generated",
     "textures": {
         "layer0": "invo:item/golem5"
-    }
+    },
+	    "overrides": [
+        {
+            "predicate": {
+                "stage1": 0.3
+            },
+            "model": "invo:item/golem5stage1"
+        },
+        {
+            "predicate": {
+                "stage2": 0.6
+            },
+            "model": "invo:item/golem5stage2"
+        },
+        {
+            "predicate": {
+                "stage3": 0.8
+            },
+            "model": "invo:item/golem5stage3"
+        },
+        {
+            "predicate": {
+                "stage4": 1
+            },
+            "model": "invo:item/golemburnout"
+        }
+    ]
 }

@@ -1,6 +1,7 @@
 package net.invo.dudes;
 
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -13,11 +14,38 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 public class golem4 extends Item {
+    public static int count = 0;
+    public static int count2 = 0;
     public golem4(Settings settings) {
         super(settings);
+        this.addPropertyGetter(new Identifier("stage1"), (stack, world, entity) -> {
+            if (count > 2400 && count < 4800) {
+                return 0.3F;
+            }
+            return 0F;
+        });
+        this.addPropertyGetter(new Identifier("stage2"), (stack, world, entity) -> {
+            if (count >= 4800 && count < 7200) {
+                return 0.6F;
+            }
+            return 0F;
+        });
+        this.addPropertyGetter(new Identifier("stage3"), (stack, world, entity) -> {
+            if (count >= 7200 && count <= 9600) {
+                return 0.8F;
+            }
+            return 0F;
+        });
+        this.addPropertyGetter(new Identifier("stage4"), (stack, world, entity) -> {
+            if (count < 0) {
+                return 1F;
+            }
+            return 0F;
+        });
     }
 
     @Override
@@ -26,20 +54,51 @@ public class golem4 extends Item {
     }
 
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        StatusEffectInstance breath = new StatusEffectInstance(StatusEffect.byRawId(13), 0, 0, false, false);
+        LivingEntity player = (LivingEntity) entity;
         if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
                 || slot == 8) {
-            StatusEffectInstance breath = new StatusEffectInstance(StatusEffect.byRawId(13), 0, 0, false, false);
-            LivingEntity bob = (LivingEntity) entity;
-            bob.addStatusEffect(breath);
+            count++;
+            if (count >= 9600) {
+                count = -1200;
+            }
+            if (count >= 0) {
+                player.addStatusEffect(breath);
+            }
+
+        }
+        if (slot != 0 && slot != 1 && slot != 2 && slot != 3 && slot != 4 && slot != 5 && slot != 6 && slot != 7
+                && slot != 8) {
+            if (count < 0) {
+                count++;
+            }
+            if (count > 0) {
+                count = 0;
+            }
+
         }
 
     }
 
     public void onCraft(ItemStack stack, World world, PlayerEntity player) {
-        double d = (double)player.getX() + (double)world.random.nextFloat();
-            double e = (double)player.getY() + (double)world.random.nextFloat() + 1;
-            double f = (double)player.getZ() + (double)world.random.nextFloat();
-            world.addParticle(ParticleTypes.MYCELIUM, d, e, f, 0.0D, 0.0D, 0.0D);
+        while (count2 < 60) {
+            Random random = new Random();
+            Random random2 = new Random();
+            Random random3 = new Random();
+            double z1 = (random.nextInt() % 50);
+            double z2 = z1 / 100;
+            double z3 = random2.nextInt() % 50;
+            double z4 = z3 / 100;
+            double z5 = random3.nextInt() % 180;
+            double z6 = z5 / 100;
+            world.addParticle(ParticleTypes.END_ROD, player.getX() + z2, player.getY() + z6, player.getZ() + z4, 0.0D,
+                    0.0D, 0.0D);
+            count2++;
+        }
+        if (count2 >= 80) {
+            count2 = 0;
+        }
+
     }
 
 }
