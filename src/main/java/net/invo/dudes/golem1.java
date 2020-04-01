@@ -3,6 +3,7 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
+import net.invo.inits.soundinit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -20,6 +21,7 @@ import net.minecraft.world.World;
 public class golem1 extends Item {
     public static int count = 0;
     public static int count2 = 0;
+
     public golem1(Settings settings) {
         super(settings);
         this.addPropertyGetter(new Identifier("stage1"), (stack, world, entity) -> {
@@ -61,6 +63,7 @@ public class golem1 extends Item {
             count++;
             if (count >= 9600) {
                 count = -1200;
+                player.playSound(soundinit.SLEEPGOLEMEVENT, 0.5F, 1F);
             }
             if (count >= 0) {
                 player.addStatusEffect(def);

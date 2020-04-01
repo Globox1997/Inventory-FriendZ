@@ -3,6 +3,7 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
+import net.invo.inits.soundinit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -62,6 +63,7 @@ public class golem2 extends Item {
             count++;
             if (count >= 9600) {
                 count = -1200;
+                player.playSound(soundinit.SLEEPGOLEMEVENT, 0.5F, 1F);
             }
             if (count >= 0) {
                 player.addStatusEffect(fire);

@@ -3,5 +3,10 @@
         "sounds": [
             "invo:sleep1"
         ]
+    },
+    "sleepgolem": {
+        "sounds": [
+            "invo:sleepgolem"
+        ]
     }
 }
