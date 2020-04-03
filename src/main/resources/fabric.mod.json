@@ -2,20 +2,17 @@
   "schemaVersion": 1,
   "id": "invo",
   "version": "1.4.0",
-
   "name": "Inventory Friends",
   "description": "Some Friends for your Inventory",
   "authors": [
     "Globox_Z"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/inventory-friendz",
+    "sources": "https://github.com/Globox1997/Inventory-FriendZ"
   },
-
-  "license": "CC0-1.0",
+  "license": "GPLv3",
   "icon": "assets/invo/friend.png",
-
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -28,9 +25,7 @@
       "net.invo.friendsclient"
     ]
   },
-  "mixins": [
-  ],
-
+  "mixins": [],
   "depends": {
     "fabricloader": ">=0.7.2",
     "fabric": "*",
