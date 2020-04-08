@@ -29,22 +29,22 @@ public class iteminit {
 
     public static void init() {
 
-        if (friendconfig.resistancegolem == true) {
+        if (friendconfig.resistancepillager == true) {
             Registry.register(Registry.ITEM, new Identifier("invo", "golem1"), GOLEM1);
         }
-        if (friendconfig.fierygolem == true) {
+        if (friendconfig.fierypillager == true) {
             Registry.register(Registry.ITEM, new Identifier("invo", "golem2"), GOLEM2);
         }
-        if (friendconfig.speedygolem == true) {
+        if (friendconfig.speedypillager == true) {
             Registry.register(Registry.ITEM, new Identifier("invo", "golem3"), GOLEM3);
         }
-        if (friendconfig.breathinggolem == true) {
+        if (friendconfig.breathingpillager == true) {
             Registry.register(Registry.ITEM, new Identifier("invo", "golem4"), GOLEM4);
         }
-        if (friendconfig.rushinggolem == true) {
+        if (friendconfig.rushingpillager == true) {
             Registry.register(Registry.ITEM, new Identifier("invo", "golem5"), GOLEM5);
         }
-        if (friendconfig.stronggolem == true) {
+        if (friendconfig.strongpillager == true) {
             Registry.register(Registry.ITEM, new Identifier("invo", "golem6"), GOLEM6);
         }
         if (friendconfig.invisiblepillager == true) {

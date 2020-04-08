@@ -24,25 +24,7 @@ public class golem2 extends Item {
 
     public golem2(Settings settings) {
         super(settings);
-        this.addPropertyGetter(new Identifier("stage1"), (stack, world, entity) -> {
-            if (count > 2400 && count < 4800) {
-                return 0.3F;
-            }
-            return 0F;
-        });
-        this.addPropertyGetter(new Identifier("stage2"), (stack, world, entity) -> {
-            if (count >= 4800 && count < 7200) {
-                return 0.6F;
-            }
-            return 0F;
-        });
-        this.addPropertyGetter(new Identifier("stage3"), (stack, world, entity) -> {
-            if (count >= 7200 && count <= 9600) {
-                return 0.8F;
-            }
-            return 0F;
-        });
-        this.addPropertyGetter(new Identifier("stage4"), (stack, world, entity) -> {
+        this.addPropertyGetter(new Identifier("sleep"), (stack, world, entity) -> {
             if (count < 0) {
                 return 1F;
             }
@@ -63,7 +45,7 @@ public class golem2 extends Item {
             count++;
             if (count >= 9600) {
                 count = -1200;
-                player.playSound(soundinit.SLEEPGOLEMEVENT, 0.5F, 1F);
+                player.playSound(soundinit.SLEEPEVENT, 0.5F, 1F);
             }
             if (count >= 0) {
                 player.addStatusEffect(fire);

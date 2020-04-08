@@ -3,30 +3,12 @@
     "textures": {
         "layer0": "invo:item/golem1"
     },
-	    "overrides": [
+    "overrides": [
         {
             "predicate": {
-                "stage1": 0.3
+                "sleep": 1
             },
-            "model": "invo:item/golem1stage1"
-        },
-        {
-            "predicate": {
-                "stage2": 0.6
-            },
-            "model": "invo:item/golem1stage2"
-        },
-        {
-            "predicate": {
-                "stage3": 0.8
-            },
-            "model": "invo:item/golem1stage3"
-        },
-        {
-            "predicate": {
-                "stage4": 1
-            },
-            "model": "invo:item/golemburnout"
+            "model": "invo:item/golemsleep1"
         }
     ]
 }

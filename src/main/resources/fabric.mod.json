@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "invo",
+  "id": "inventoryfriendz",
   "version": "1.4.0",
   "name": "Inventory Friends",
-  "description": "Some Friends for your Inventory",
+  "description": "Some Pillagers for your Inventory",
   "authors": [
     "Globox_Z"
   ],
