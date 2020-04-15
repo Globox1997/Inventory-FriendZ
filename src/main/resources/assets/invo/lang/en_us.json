@@ -39,5 +39,11 @@
     "text.autoconfig.invo.option.visionpillager": "Vision Pillager",
     "text.autoconfig.invo.option.fallingpillager": "Falling Pillager",
     "text.autoconfig.invo.option.conduitingpillager": "Conduiting Pillager",
-    "text.autoconfig.invo.option.luckypillager": "Lucky Pillager"
+    "text.autoconfig.invo.option.luckypillager": "Lucky Pillager",
+    "item.invo.teleportpillager": "§aTeleport Pillager",
+    "item.invo.teleportpillager.tooltip": "§9Home Teleport",
+    "item.invo.teleportpillagermissing": "Pillager is sleeping",
+    "item.invo.teleportpillagernotset": "Missing Teleport Point",
+    "item.invo.teleportpillagersave": "Teleport Point Set",
+    "item.invo.teleportpillagerdimension": "You have to be in the Overworld"
 }

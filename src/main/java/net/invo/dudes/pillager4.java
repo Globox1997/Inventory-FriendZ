@@ -44,7 +44,7 @@ public class pillager4 extends Item {
                 || slot == 8) {
             count++;
             if (count >= 9600) {
-                count = -1200;
+                count = -2400;
                 player.playSound(soundinit.SLEEPEVENT, 0.5F, 1F);
             }
             if (count >= 0) {

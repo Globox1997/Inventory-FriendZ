@@ -26,6 +26,9 @@ public class iteminit {
     public static final bluefeather BLUEFEATHER = new bluefeather(new Item.Settings());
     public static final blueingot BLUEINGOT = new blueingot(new Item.Settings());
     public static final bluequartz BLUEQUARTZ = new bluequartz(new Item.Settings());
+    public static final hastetotem1 HASTETOTEM1 = new hastetotem1(new Item.Settings().maxCount(1));
+
+    public static final teleportpillager TELEPORTPILLAGER = new teleportpillager(new Item.Settings().maxCount(1));
 
     public static void init() {
 
@@ -62,6 +65,10 @@ public class iteminit {
         if (friendconfig.luckypillager == true) {
             Registry.register(Registry.ITEM, new Identifier("invo", "pillager5"), PILLAGER5);
         }
+
+        Registry.register(Registry.ITEM, new Identifier("invo", "hastetotem1"), HASTETOTEM1);
+
+        Registry.register(Registry.ITEM, new Identifier("invo", "teleportpillager"), TELEPORTPILLAGER);
 
         Registry.register(Registry.ITEM, new Identifier("invo", "blueemerald"), BLUEEMERALD);
         Registry.register(Registry.ITEM, new Identifier("invo", "bluemagma"), BLUEMAGMA);

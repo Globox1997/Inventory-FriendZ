@@ -19,6 +19,6 @@ public class friendconfig implements ConfigData {
     public static boolean visionpillager = true;
     public static boolean fallingpillager = true; // false
     public static boolean conduitingpillager = true; // false
-    public static boolean luckypillager = true;
+    public static boolean luckypillager = true; // fakse
 
 }

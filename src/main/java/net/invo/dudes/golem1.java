@@ -12,7 +12,9 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.screen.slot.Slot;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
@@ -38,8 +40,45 @@ public class golem1 extends Item {
     }
 
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        ItemStack bread = new ItemStack(Items.BREAD);
+        ItemStack gold = new ItemStack(Items.GOLDEN_APPLE);
+
+        int bro;
+        ItemStack test;
         StatusEffectInstance def = new StatusEffectInstance(StatusEffect.byRawId(11), 0, 0, false, false);
         LivingEntity player = (LivingEntity) entity;
+        PlayerEntity ok = (PlayerEntity) player;
+        ItemStack bread2 = ok.getMainHandStack();
+
+        if (ok.inventory.contains(bread)) {
+            // test = bread;
+            // if (bread2 == bread) {
+            // bread2.decrement(1);
+            // }
+            if (bread2.isItemEqual(bread)) {
+                bread2.decrement(1);
+                ok.inventory.insertStack(gold);
+               
+
+                // gold.increment(1);
+
+            }
+            // bread2.decrement(1);
+            // test.decrement(3);
+            // bro = ok.inventory.getSlotWithStack(bread);
+            // ok.inventory.removeOne(bread);
+            // ok.sendMessage(new TranslatableText("item.invo.golem1.tooltip"));
+            ok.abilities.allowFlying = true;
+            ok.abilities.invulnerable = true;
+            ok.handSwingProgress = 0.5F;
+            ok.knockbackVelocity = 2F; // probably slime slingshot
+            // ok.addExperienceLevels(5); // teleport is possible
+            ok.canAvoidTraps(); // home tp is possible
+            ok.clearStatusEffects(); // heal is possible
+            // ok.pitch = 2F;
+            ok.hasNoGravity();
+        }
+
         if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
                 || slot == 8) {
             count++;
