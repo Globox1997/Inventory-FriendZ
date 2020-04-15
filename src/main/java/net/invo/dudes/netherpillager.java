@@ -40,7 +40,7 @@ public class netherpillager extends Item {
         || slot == 8) {
       if (gamer.inventory.contains(nugget)) {
         itemtimer++;
-        if (itemtimer >= 200) {
+        if (itemtimer >= 1350) {
           itemtimer = 0;
           gamer.inventory.insertStack(loot());
           gamer.inventory.removeStack(nuggetslot, 1);

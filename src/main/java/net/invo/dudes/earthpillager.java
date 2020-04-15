@@ -40,7 +40,7 @@ public class earthpillager extends Item {
         || slot == 8) {
       if (gamer.inventory.contains(nugget)) {
         itemtimer++;
-        if (itemtimer >= 200) {
+        if (itemtimer >= 1200) {
           itemtimer = 0;
           gamer.inventory.insertStack(loot());
           gamer.inventory.removeStack(nuggetslot, 1);

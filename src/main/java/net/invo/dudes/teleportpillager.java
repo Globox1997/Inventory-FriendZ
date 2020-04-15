@@ -37,7 +37,7 @@ public class teleportpillager extends Item {
   public teleportpillager(Settings settings) {
     super(settings);
     this.addPropertyGetter(new Identifier("sleep"), (stack, world, entity) -> {
-      if (count > 0 && count < 240) {
+      if (count > 0 && count < 12000) {
         return 1F;
       }
       return 0F;
@@ -85,7 +85,7 @@ public class teleportpillager extends Item {
     LivingEntity player = (LivingEntity) entity;
     if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
         || slot == 8) {
-      if (count < 240) {
+      if (count < 12000) {
         count++;
 
       }
@@ -118,26 +118,26 @@ public class teleportpillager extends Item {
       if (count5 < 10) {
         count5++;
         if (count5 == 8) {
-          player.sendMessage(new TranslatableText("item.invo.teleportpillagermissing"));
+          player.sendSystemMessage(new TranslatableText("item.invo.teleportpillagermissing"));
         }
       }
       if (count6 < 10) {
         count6++;
         if (count6 == 8) {
-          player.sendMessage(new TranslatableText("item.invo.teleportpillagernotset"));
+          player.sendSystemMessage(new TranslatableText("item.invo.teleportpillagernotset"));
         }
       }
       if (count7 < 10) {
         count7++;
         if (count7 == 8) {
-          player.sendMessage(new TranslatableText("item.invo.teleportpillagersave"));
+          player.sendSystemMessage(new TranslatableText("item.invo.teleportpillagersave"));
 
         }
       }
       if (count8 < 10) {
         count8++;
         if (count8 == 8) {
-          player.sendMessage(new TranslatableText("item.invo.teleportpillagerdimension"));
+          player.sendSystemMessage(new TranslatableText("item.invo.teleportpillagerdimension"));
 
         }
       }

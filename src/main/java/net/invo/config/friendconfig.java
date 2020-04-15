@@ -5,7 +5,7 @@ import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
 import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
 
 @Config(name = "invo")
-@Config.Gui.Background("minecraft:textures/block/oak_planks.png")
+@Config.Gui.Background("minecraft:textures/block/cobblestone.png")
 
 public class friendconfig implements ConfigData {
 
@@ -16,7 +16,7 @@ public class friendconfig implements ConfigData {
     public static boolean rushingpillager = true;
     public static boolean strengthtotem = true;
 
-    public static boolean invisiblepillager = true;
+    public static boolean invisiblepillager = true; // false
     public static boolean fallingpillager = true;
     public static boolean conduitingpillager = true;
     public static boolean luckypillager = true;
