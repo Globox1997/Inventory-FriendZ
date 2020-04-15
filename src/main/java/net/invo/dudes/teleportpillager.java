@@ -90,7 +90,7 @@ public class teleportpillager extends Item {
 
       }
       if (count == 1) {
-        player.playSound(soundinit.SLEEPEVENT, 0.8F, 1F);
+        player.playSound(soundinit.SLEEPEVENT, 0.7F, 1F);
       }
 
       if (count4 == 58 || count4 == 57) {

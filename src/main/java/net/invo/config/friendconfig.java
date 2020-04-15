@@ -9,16 +9,16 @@ import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
 
 public class friendconfig implements ConfigData {
 
-    public static boolean resistancepillager = true;
-    public static boolean fierypillager = true;
-    public static boolean speedypillager = true;
-    public static boolean breathingpillager = true; // umstellen nicht vergessen
+    public static boolean resistancetotem = true;
+    public static boolean fierytotem = true;
+    public static boolean speedtotem = true;
+    public static boolean breathtotem = true;
     public static boolean rushingpillager = true;
-    public static boolean strongpillager = true;
-    public static boolean invisiblepillager = true; // false
-    public static boolean visionpillager = true;
-    public static boolean fallingpillager = true; // false
-    public static boolean conduitingpillager = true; // false
-    public static boolean luckypillager = true; // fakse
+    public static boolean strengthtotem = true;
+
+    public static boolean invisiblepillager = true;
+    public static boolean fallingpillager = true;
+    public static boolean conduitingpillager = true;
+    public static boolean luckypillager = true;
 
 }

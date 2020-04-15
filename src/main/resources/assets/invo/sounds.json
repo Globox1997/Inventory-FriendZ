@@ -8,5 +8,14 @@
         "sounds": [
             "invo:sleepgolem"
         ]
+    },
+    "tradersound": {
+        "sounds": [
+            "invo:idle1",
+            "invo:idle2",
+            "invo:idle3",
+            "invo:idle4",
+            "invo:idle5"
+        ]
     }
 }

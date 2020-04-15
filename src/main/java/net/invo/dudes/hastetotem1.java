@@ -3,7 +3,6 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
-import net.invo.inits.soundinit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -13,6 +12,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
@@ -24,6 +24,12 @@ public class hastetotem1 extends Item {
 
   public hastetotem1(Settings settings) {
     super(settings);
+    this.addPropertyGetter(new Identifier("phase"), (stack, world, entity) -> {
+      if (count >= 1200 && count <= 2400) {
+        return 0.5F;
+      }
+      return 0F;
+    });
     this.addPropertyGetter(new Identifier("sleep"), (stack, world, entity) -> {
       if (count < 0) {
         return 1F;
@@ -37,6 +43,7 @@ public class hastetotem1 extends Item {
     tooltip.add(new TranslatableText("item.invo.hastetotem1.tooltip"));
   }
 
+  @Override
   public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
     StatusEffectInstance haste = new StatusEffectInstance(StatusEffect.byRawId(3), 8, 0, false, false);
     StatusEffectInstance hunger = new StatusEffectInstance(StatusEffect.byRawId(17), 8, 0, false, false);
@@ -46,11 +53,11 @@ public class hastetotem1 extends Item {
       count++;
       if (count >= 2400) {
         count = -7200;
-        player.playSound(soundinit.SLEEPEVENT, 0.5F, 1F);
+        player.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 0.5F, 0.1F);
       }
       if (count >= 0) {
-        player.addStatusEffect(haste);
         player.addStatusEffect(hunger);
+        player.addStatusEffect(haste);
       }
 
     }
@@ -67,6 +74,7 @@ public class hastetotem1 extends Item {
 
   }
 
+  @Override
   public void onCraft(ItemStack stack, World world, PlayerEntity player) {
     while (count2 < 60) {
       Random random = new Random();

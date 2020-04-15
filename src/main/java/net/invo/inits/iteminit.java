@@ -9,12 +9,6 @@ import net.minecraft.util.registry.Registry;
 
 public class iteminit {
 
-    public static final golem1 GOLEM1 = new golem1(new Item.Settings().maxCount(1));
-    public static final golem2 GOLEM2 = new golem2(new Item.Settings().maxCount(1));
-    public static final golem3 GOLEM3 = new golem3(new Item.Settings().maxCount(1));
-    public static final golem4 GOLEM4 = new golem4(new Item.Settings().maxCount(1));
-    public static final golem5 GOLEM5 = new golem5(new Item.Settings().maxCount(1));
-    public static final golem6 GOLEM6 = new golem6(new Item.Settings().maxCount(1));
     public static final pillager1 PILLAGER1 = new pillager1(new Item.Settings().maxCount(1));
     public static final pillager2 PILLAGER2 = new pillager2(new Item.Settings().maxCount(1));
     public static final pillager3 PILLAGER3 = new pillager3(new Item.Settings().maxCount(1));
@@ -26,35 +20,47 @@ public class iteminit {
     public static final bluefeather BLUEFEATHER = new bluefeather(new Item.Settings());
     public static final blueingot BLUEINGOT = new blueingot(new Item.Settings());
     public static final bluequartz BLUEQUARTZ = new bluequartz(new Item.Settings());
+
+    public static final woodtotem WOODTOTEM = new woodtotem(new Item.Settings());
+    public static final fireresistancetotem1 FIRERESISTANCETOTEM1 = new fireresistancetotem1(
+            new Item.Settings().maxCount(1));
+    public static final fireresistancetotem2 FIRERESISTANCETOTEM2 = new fireresistancetotem2(
+            new Item.Settings().maxCount(1));
+    public static final fireresistancetotem3 FIRERESISTANCETOTEM3 = new fireresistancetotem3(
+            new Item.Settings().maxCount(1));
     public static final hastetotem1 HASTETOTEM1 = new hastetotem1(new Item.Settings().maxCount(1));
+    public static final hastetotem2 HASTETOTEM2 = new hastetotem2(new Item.Settings().maxCount(1));
+    public static final hastetotem3 HASTETOTEM3 = new hastetotem3(new Item.Settings().maxCount(1));
+    public static final nightvisiontotem1 NIGHTVISIONTOTEM1 = new nightvisiontotem1(new Item.Settings().maxCount(1));
+    public static final nightvisiontotem2 NIGHTVISIONTOTEM2 = new nightvisiontotem2(new Item.Settings().maxCount(1));
+    public static final nightvisiontotem3 NIGHTVISIONTOTEM3 = new nightvisiontotem3(new Item.Settings().maxCount(1));
+    public static final resistancetotem1 RESISTANCETOTEM1 = new resistancetotem1(new Item.Settings().maxCount(1));
+    public static final resistancetotem2 RESISTANCETOTEM2 = new resistancetotem2(new Item.Settings().maxCount(1));
+    public static final resistancetotem3 RESISTANCETOTEM3 = new resistancetotem3(new Item.Settings().maxCount(1));
+    public static final speedtotem1 SPEEDTOTEM1 = new speedtotem1(new Item.Settings().maxCount(1));
+    public static final speedtotem2 SPEEDTOTEM2 = new speedtotem2(new Item.Settings().maxCount(1));
+    public static final speedtotem3 SPEEDTOTEM3 = new speedtotem3(new Item.Settings().maxCount(1));
+    public static final strengthtotem1 STRENGTHTOTEM1 = new strengthtotem1(new Item.Settings().maxCount(1));
+    public static final strengthtotem2 STRENGTHTOTEM2 = new strengthtotem2(new Item.Settings().maxCount(1));
+    public static final strengthtotem3 STRENGTHTOTEM3 = new strengthtotem3(new Item.Settings().maxCount(1));
+    public static final waterbreathingtotem1 WATERBREATHINGTOTEM1 = new waterbreathingtotem1(
+            new Item.Settings().maxCount(1));
+    public static final waterbreathingtotem2 WATERBREATHINGTOTEM2 = new waterbreathingtotem2(
+            new Item.Settings().maxCount(1));
+    public static final waterbreathingtotem3 WATERBREATHINGTOTEM3 = new waterbreathingtotem3(
+            new Item.Settings().maxCount(1));
 
     public static final teleportpillager TELEPORTPILLAGER = new teleportpillager(new Item.Settings().maxCount(1));
+    public static final marinepillager MARINEPILLAGER = new marinepillager(new Item.Settings().maxCount(1));
+    public static final earthpillager EARTHPILLAGER = new earthpillager(new Item.Settings().maxCount(1));
+    public static final foodpillager FOODPILLAGER = new foodpillager(new Item.Settings().maxCount(1));
+    public static final netherpillager NETHERPILLAGER = new netherpillager(new Item.Settings().maxCount(1));
+    public static final endpillager ENDPILLAGER = new endpillager(new Item.Settings().maxCount(1));
 
     public static void init() {
 
-        if (friendconfig.resistancepillager == true) {
-            Registry.register(Registry.ITEM, new Identifier("invo", "golem1"), GOLEM1);
-        }
-        if (friendconfig.fierypillager == true) {
-            Registry.register(Registry.ITEM, new Identifier("invo", "golem2"), GOLEM2);
-        }
-        if (friendconfig.speedypillager == true) {
-            Registry.register(Registry.ITEM, new Identifier("invo", "golem3"), GOLEM3);
-        }
-        if (friendconfig.breathingpillager == true) {
-            Registry.register(Registry.ITEM, new Identifier("invo", "golem4"), GOLEM4);
-        }
-        if (friendconfig.rushingpillager == true) {
-            Registry.register(Registry.ITEM, new Identifier("invo", "golem5"), GOLEM5);
-        }
-        if (friendconfig.strongpillager == true) {
-            Registry.register(Registry.ITEM, new Identifier("invo", "golem6"), GOLEM6);
-        }
         if (friendconfig.invisiblepillager == true) {
             Registry.register(Registry.ITEM, new Identifier("invo", "pillager1"), PILLAGER1);
-        }
-        if (friendconfig.visionpillager == true) {
-            Registry.register(Registry.ITEM, new Identifier("invo", "pillager2"), PILLAGER2);
         }
         if (friendconfig.fallingpillager == true) {
             Registry.register(Registry.ITEM, new Identifier("invo", "pillager3"), PILLAGER3);
@@ -65,10 +71,35 @@ public class iteminit {
         if (friendconfig.luckypillager == true) {
             Registry.register(Registry.ITEM, new Identifier("invo", "pillager5"), PILLAGER5);
         }
-
+        Registry.register(Registry.ITEM, new Identifier("invo", "woodtotem"), WOODTOTEM);
+        Registry.register(Registry.ITEM, new Identifier("invo", "fireresistancetotem1"), FIRERESISTANCETOTEM1);
+        Registry.register(Registry.ITEM, new Identifier("invo", "fireresistancetotem2"), FIRERESISTANCETOTEM2);
+        Registry.register(Registry.ITEM, new Identifier("invo", "fireresistancetotem3"), FIRERESISTANCETOTEM3);
         Registry.register(Registry.ITEM, new Identifier("invo", "hastetotem1"), HASTETOTEM1);
+        Registry.register(Registry.ITEM, new Identifier("invo", "hastetotem2"), HASTETOTEM2);
+        Registry.register(Registry.ITEM, new Identifier("invo", "hastetotem3"), HASTETOTEM3);
+        Registry.register(Registry.ITEM, new Identifier("invo", "nightvisiontotem1"), NIGHTVISIONTOTEM1);
+        Registry.register(Registry.ITEM, new Identifier("invo", "nightvisiontotem2"), NIGHTVISIONTOTEM2);
+        Registry.register(Registry.ITEM, new Identifier("invo", "nightvisiontotem3"), NIGHTVISIONTOTEM3);
+        Registry.register(Registry.ITEM, new Identifier("invo", "resistancetotem1"), RESISTANCETOTEM1);
+        Registry.register(Registry.ITEM, new Identifier("invo", "resistancetotem2"), RESISTANCETOTEM2);
+        Registry.register(Registry.ITEM, new Identifier("invo", "resistancetotem3"), RESISTANCETOTEM3);
+        Registry.register(Registry.ITEM, new Identifier("invo", "speedtotem1"), SPEEDTOTEM1);
+        Registry.register(Registry.ITEM, new Identifier("invo", "speedtotem2"), SPEEDTOTEM2);
+        Registry.register(Registry.ITEM, new Identifier("invo", "speedtotem3"), SPEEDTOTEM3);
+        Registry.register(Registry.ITEM, new Identifier("invo", "strengthtotem1"), STRENGTHTOTEM1);
+        Registry.register(Registry.ITEM, new Identifier("invo", "strengthtotem2"), STRENGTHTOTEM2);
+        Registry.register(Registry.ITEM, new Identifier("invo", "strengthtotem3"), STRENGTHTOTEM3);
+        Registry.register(Registry.ITEM, new Identifier("invo", "waterbreathingtotem1"), WATERBREATHINGTOTEM1);
+        Registry.register(Registry.ITEM, new Identifier("invo", "waterbreathingtotem2"), WATERBREATHINGTOTEM2);
+        Registry.register(Registry.ITEM, new Identifier("invo", "waterbreathingtotem3"), WATERBREATHINGTOTEM3);
 
         Registry.register(Registry.ITEM, new Identifier("invo", "teleportpillager"), TELEPORTPILLAGER);
+        Registry.register(Registry.ITEM, new Identifier("invo", "marinepillager"), MARINEPILLAGER);
+        Registry.register(Registry.ITEM, new Identifier("invo", "earthpillager"), EARTHPILLAGER);
+        Registry.register(Registry.ITEM, new Identifier("invo", "endpillager"), ENDPILLAGER);
+        Registry.register(Registry.ITEM, new Identifier("invo", "foodpillager"), FOODPILLAGER);
+        Registry.register(Registry.ITEM, new Identifier("invo", "netherpillager"), NETHERPILLAGER);
 
         Registry.register(Registry.ITEM, new Identifier("invo", "blueemerald"), BLUEEMERALD);
         Registry.register(Registry.ITEM, new Identifier("invo", "bluemagma"), BLUEMAGMA);

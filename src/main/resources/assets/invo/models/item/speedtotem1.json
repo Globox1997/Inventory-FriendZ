@@ -1,0 +1,20 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "invo:item/speedtotem1"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "sleep": 1
+      },
+      "model": "invo:item/totemsleep"
+    },
+    {
+      "predicate": {
+        "phase": 0.5
+      },
+      "model": "invo:item/totem1phase"
+    }
+  ]
+}
