@@ -52,7 +52,7 @@ public class nightvisiontotem3 extends Item {
       count++;
       if (count >= 9600) {
         count = -2400;
-        player.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 0.5F, 0.1F);
+        player.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 0.5F, 0.8F);
       }
       if (count >= 0) {
         player.addStatusEffect(night);

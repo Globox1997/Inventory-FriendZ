@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "fdf",
+    "ded",
+    "fof"
+  ],
+  "key": {
+    "d": {
+      "item": "minecraft:diamond"
+    },
+    "e": {
+      "item": "invo:hastetotem1"
+    },
+    "f": {
+      "item": "minecraft:crying_obsidian"
+    },
+    "o": {
+      "item": "minecraft:diamond_block"
+    }
+  },
+  "result": {
+    "item": "invo:hastetotem2"
+  }
+}

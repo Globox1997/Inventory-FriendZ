@@ -46,18 +46,18 @@ public class speedtotem1 extends Item {
   @Override
   public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
     StatusEffectInstance speed = new StatusEffectInstance(StatusEffect.byRawId(1), 8, 0, false, false);
-    StatusEffectInstance weak = new StatusEffectInstance(StatusEffect.byRawId(18), 8, 0, false, false);
+    StatusEffectInstance hunger = new StatusEffectInstance(StatusEffect.byRawId(17), 8, 0, false, false);
     LivingEntity player = (LivingEntity) entity;
     if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
         || slot == 8) {
       count++;
       if (count >= 2400) {
         count = -7200;
-        player.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 0.5F, 0.1F);
+        player.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 0.5F, 0.8F);
       }
       if (count >= 0) {
         player.addStatusEffect(speed);
-        player.addStatusEffect(weak);
+        player.addStatusEffect(hunger);
       }
 
     }

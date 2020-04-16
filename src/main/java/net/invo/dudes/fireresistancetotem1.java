@@ -53,7 +53,7 @@ public class fireresistancetotem1 extends Item {
       count++;
       if (count >= 2400) {
         count = -7200;
-        player.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 0.5F, 0.1F);
+        player.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 0.5F, 0.8F);
       }
       if (count >= 0) {
         player.addStatusEffect(fire);

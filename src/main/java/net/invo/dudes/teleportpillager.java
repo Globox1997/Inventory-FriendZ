@@ -24,7 +24,7 @@ public class teleportpillager extends Item {
   double xposition = 0;
   double yposition;
   double zposition;
-  public static int count = 241;
+  public static int count = 12001;
   public static int count2 = 0;
   public static int count3 = 0;
   public static int count4 = 81;

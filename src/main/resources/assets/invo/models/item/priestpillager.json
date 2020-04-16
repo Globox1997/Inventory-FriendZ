@@ -1,0 +1,32 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "invo:item/priestpillager"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "phase4": 1
+      },
+      "model": "invo:item/priestpillagerphase4"
+    },
+    {
+      "predicate": {
+        "phase3": 0.8
+      },
+      "model": "invo:item/priestpillagerphase3"
+    },
+    {
+      "predicate": {
+        "phase2": 0.4
+      },
+      "model": "invo:item/priestpillagerphase2"
+    },
+    {
+      "predicate": {
+        "phase1": 0.2
+      },
+      "model": "invo:item/priestpillagerphase1"
+    }
+  ]
+}

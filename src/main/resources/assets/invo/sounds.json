@@ -11,11 +11,11 @@
     },
     "tradersound": {
         "sounds": [
-            "invo:idle1",
-            "invo:idle2",
-            "invo:idle3",
-            "invo:idle4",
-            "invo:idle5"
+            "invo:pilidle1",
+            "invo:pilidle2",
+            "invo:pilidle3",
+            "invo:pilidle4",
+            "invo:pilidle5"
         ]
     }
 }

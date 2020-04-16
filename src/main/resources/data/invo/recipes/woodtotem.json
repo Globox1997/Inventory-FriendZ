@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "fdf",
+    "dfd",
+    "ede"
+  ],
+  "key": {
+    "d": {
+      "item": "minecraft:iron_nugget"
+    },
+    "e": {
+      "item": "minecraft:oak_log"
+    },
+    "f": {
+      "item": "minecraft:oak_planks"
+    }
+  },
+  "result": {
+    "item": "invo:woodtotem"
+  }
+}

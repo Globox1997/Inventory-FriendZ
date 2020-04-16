@@ -53,12 +53,13 @@
     "item.invo.pillager4.tooltip": "§9Conduit Power",
     "item.invo.pillager5": "§aLucky Pillager",
     "item.invo.pillager5.tooltip": "§9Luck",
-    "item.invo.blueemerald": "Blue Emerald",
-    "item.invo.bluemagma": "Blue Magma Cream",
-    "item.invo.blueshard": "Blue Prismarine Shard",
-    "item.invo.bluefeather": "Blue Feather",
-    "item.invo.blueingot": "Blue Ingot",
-    "item.invo.bluequartz": "Blue Quartz",
+    "item.invo.blueemerald": "Infused Emerald",
+    "item.invo.bluemagma": "Infused Magma Cream",
+    "item.invo.blueshard": "Infused Prismarine Shard",
+    "item.invo.bluefeather": "Infused Feather",
+    "item.invo.blueingot": "Infused Ingot",
+    "item.invo.bluequartz": "Infused Quartz",
+    "item.invo.blueeye": "Infused Eye",
     "text.autoconfig.invo.title": "Inventory Friends Config",
     "text.autoconfig.invo.option.resistancepillager": "Resistance Pillager",
     "text.autoconfig.invo.option.fierypillager": "Fiery Pillager",
@@ -86,5 +87,7 @@
     "item.invo.foodpillager": "§5Overeating Pillager",
     "item.invo.foodpillager.tooltip": "Collect Food",
     "item.invo.netherpillager": "§5Pillager of the Nether",
-    "item.invo.netherpillager.tooltip": "Collect Nether Items"
+    "item.invo.netherpillager.tooltip": "Collect Nether Items",
+    "item.invo.priestpillager": "§5Pillager of the Righteousness",
+    "item.invo.priestpillager.tooltip": "Restores Health"
 }

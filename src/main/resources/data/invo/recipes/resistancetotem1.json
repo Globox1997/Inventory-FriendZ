@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ofo",
+    "ded",
+    "odo"
+  ],
+  "key": {
+    "d": {
+      "item": "minecraft:iron_ingot"
+    },
+    "e": {
+      "item": "invo:woodtotem"
+    },
+    "f": {
+      "item": "minecraft:nether_star"
+    },
+    "o": {
+      "item": "invo:blueingot"
+    }
+  },
+  "result": {
+    "item": "invo:resistancetotem1"
+  }
+}
