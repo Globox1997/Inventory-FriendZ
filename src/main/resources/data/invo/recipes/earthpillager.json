@@ -1,16 +1,31 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " d ",
-    "ded",
-    " d "
+    "mem",
+    "fdo",
+    "lal"
   ],
   "key": {
     "d": {
-      "item": "minecraft:diamond"
+      "item": "minecraft:emerald"
     },
     "e": {
-      "item": "minecraft:prismarine_shard"
+      "item": "minecraft:iron_pickaxe"
+    },
+    "f": {
+      "item": "minecraft:stone"
+    },
+    "o": {
+      "item": "minecraft:sand"
+    },
+    "l": {
+      "item": "minecraft:flint"
+    },
+    "a": {
+      "item": "minecraft:dirt"
+    },
+    "m": {
+      "item": "minecraft:honeycomb"
     }
   },
   "result": {

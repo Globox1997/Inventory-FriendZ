@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ofo",
+    "ded",
+    "olo"
+  ],
+  "key": {
+    "d": {
+      "item": "minecraft:golden_apple"
+    },
+    "e": {
+      "item": "minecraft:emerald"
+    },
+    "f": {
+      "item": "minecraft:sugar"
+    },
+    "o": {
+      "item": "minecraft:iron_ingot"
+    },
+    "l": {
+      "item": "minecraft:book"
+    }
+  },
+  "result": {
+    "item": "invo:priestpillager"
+  }
+}

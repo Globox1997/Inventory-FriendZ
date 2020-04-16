@@ -41,6 +41,7 @@ public class hastetotem3 extends Item {
   @Override
   public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
     tooltip.add(new TranslatableText("item.invo.hastetotem3.tooltip"));
+    tooltip.add(new TranslatableText("item.invo.hastetotem3.tooltip2"));
   }
 
   @Override

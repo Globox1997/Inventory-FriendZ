@@ -58,6 +58,8 @@ public class iteminit {
     public static final endpillager ENDPILLAGER = new endpillager(new Item.Settings().maxCount(1));
     public static final priestpillager PRIESTPILLAGER = new priestpillager(new Item.Settings().maxCount(1));
 
+    public static final optotem OPTOTEM = new optotem(new Item.Settings().maxCount(1));
+
     public static void init() {
 
         if (friendconfig.invisiblepillager == true) {
@@ -111,13 +113,27 @@ public class iteminit {
         Registry.register(Registry.ITEM, new Identifier("invo", "waterbreathingtotem2"), WATERBREATHINGTOTEM2);
         Registry.register(Registry.ITEM, new Identifier("invo", "waterbreathingtotem3"), WATERBREATHINGTOTEM3);
 
-        Registry.register(Registry.ITEM, new Identifier("invo", "teleportpillager"), TELEPORTPILLAGER);
-        Registry.register(Registry.ITEM, new Identifier("invo", "marinepillager"), MARINEPILLAGER);
-        Registry.register(Registry.ITEM, new Identifier("invo", "earthpillager"), EARTHPILLAGER);
-        Registry.register(Registry.ITEM, new Identifier("invo", "endpillager"), ENDPILLAGER);
-        Registry.register(Registry.ITEM, new Identifier("invo", "foodpillager"), FOODPILLAGER);
-        Registry.register(Registry.ITEM, new Identifier("invo", "netherpillager"), NETHERPILLAGER);
-        Registry.register(Registry.ITEM, new Identifier("invo", "priestpillager"), PRIESTPILLAGER);
+        if (friendconfig.teleportpillager == true) {
+            Registry.register(Registry.ITEM, new Identifier("invo", "teleportpillager"), TELEPORTPILLAGER);
+        }
+        if (friendconfig.marinepillager == true) {
+            Registry.register(Registry.ITEM, new Identifier("invo", "marinepillager"), MARINEPILLAGER);
+        }
+        if (friendconfig.earthpillager == true) {
+            Registry.register(Registry.ITEM, new Identifier("invo", "earthpillager"), EARTHPILLAGER);
+        }
+        if (friendconfig.endpillager == true) {
+            Registry.register(Registry.ITEM, new Identifier("invo", "endpillager"), ENDPILLAGER);
+        }
+        if (friendconfig.foodpillager == true) {
+            Registry.register(Registry.ITEM, new Identifier("invo", "foodpillager"), FOODPILLAGER);
+        }
+        if (friendconfig.netherpillager == true) {
+            Registry.register(Registry.ITEM, new Identifier("invo", "netherpillager"), NETHERPILLAGER);
+        }
+        if (friendconfig.priestpillager == true) {
+            Registry.register(Registry.ITEM, new Identifier("invo", "priestpillager"), PRIESTPILLAGER);
+        }
 
         Registry.register(Registry.ITEM, new Identifier("invo", "blueemerald"), BLUEEMERALD);
         Registry.register(Registry.ITEM, new Identifier("invo", "bluemagma"), BLUEMAGMA);
@@ -126,6 +142,10 @@ public class iteminit {
         Registry.register(Registry.ITEM, new Identifier("invo", "bluequartz"), BLUEQUARTZ);
         Registry.register(Registry.ITEM, new Identifier("invo", "blueingot"), BLUEINGOT);
         Registry.register(Registry.ITEM, new Identifier("invo", "blueeye"), BLUEEYE);
+
+        if (friendconfig.optotem == true) {
+            Registry.register(Registry.ITEM, new Identifier("invo", "optotem"), OPTOTEM);
+        }
 
     }
 

@@ -17,9 +17,18 @@ public class friendconfig implements ConfigData {
     public static boolean strengthtotem = true;
     public static boolean waterbreathtotem = true;
 
+    public static boolean earthpillager = true;
+    public static boolean endpillager = true;
+    public static boolean foodpillager = true;
+    public static boolean marinepillager = true;
+    public static boolean netherpillager = true;
+    public static boolean priestpillager = true;
+    public static boolean teleportpillager = true;
+
     public static boolean invisiblepillager = true; // false
     public static boolean fallingpillager = true;
     public static boolean conduitingpillager = true;
     public static boolean luckypillager = true;
+    public static boolean optotem = true;
 
 }

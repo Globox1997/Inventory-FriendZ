@@ -1,16 +1,25 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " d ",
+    "fdf",
     "ded",
-    " d "
+    "olo"
   ],
   "key": {
     "d": {
-      "item": "minecraft:diamond"
+      "item": "minecraft:prismarine_shard"
     },
     "e": {
-      "item": "minecraft:prismarine_shard"
+      "item": "minecraft:emerald"
+    },
+    "f": {
+      "item": "minecraft:kelp"
+    },
+    "o": {
+      "item": "minecraft:prismarine_crystals"
+    },
+    "l": {
+      "item": "minecraft:water_bucket"
     }
   },
   "result": {

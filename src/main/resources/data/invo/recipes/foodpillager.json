@@ -1,16 +1,37 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " d ",
-    "ded",
-    " d "
+    "efr",
+    "udo",
+    "lma"
   ],
   "key": {
     "d": {
-      "item": "minecraft:diamond"
+      "item": "minecraft:emerald"
     },
     "e": {
-      "item": "minecraft:prismarine_shard"
+      "item": "minecraft:iron_hoe"
+    },
+    "f": {
+      "item": "minecraft:bone_meal"
+    },
+    "o": {
+      "item": "minecraft:beetroot_seeds"
+    },
+    "l": {
+      "item": "minecraft:melon_seeds"
+    },
+    "a": {
+      "item": "minecraft:pumpkin_seeds"
+    },
+    "m": {
+      "item": "minecraft:wheat_seeds"
+    },
+    "u": {
+      "item": "minecraft:cocoa_beans"
+    },
+    "r": {
+      "item": "minecraft:water_bucket"
     }
   },
   "result": {

@@ -41,6 +41,7 @@ public class resistancetotem1 extends Item {
   @Override
   public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
     tooltip.add(new TranslatableText("item.invo.resistancetotem1.tooltip"));
+    tooltip.add(new TranslatableText("item.invo.resistancetotem1.tooltip2"));
   }
 
   @Override

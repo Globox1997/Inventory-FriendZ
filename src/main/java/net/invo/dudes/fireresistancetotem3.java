@@ -41,6 +41,7 @@ public class fireresistancetotem3 extends Item {
   @Override
   public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
     tooltip.add(new TranslatableText("item.invo.fireresistancetotem3.tooltip"));
+    tooltip.add(new TranslatableText("item.invo.fireresistancetotem3.tooltip2"));
   }
 
   @Override
@@ -92,6 +93,11 @@ public class fireresistancetotem3 extends Item {
       count2 = 0;
     }
 
+  }
+
+  @Override
+  public boolean isFireproof() {
+    return true;
   }
 
 }

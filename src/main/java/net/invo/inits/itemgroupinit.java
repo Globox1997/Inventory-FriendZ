@@ -9,16 +9,46 @@ import net.minecraft.util.Identifier;
 public class itemgroupinit {
 
   public static final ItemGroup invo_GROUP = FabricItemGroupBuilder.create(new Identifier("invo", "friends"))
-      .icon(() -> new ItemStack(iteminit.PILLAGER1)).appendItems(stacks -> {
-        stacks.add(new ItemStack(iteminit.EARTHPILLAGER));
-        stacks.add(new ItemStack(iteminit.ENDPILLAGER));
-        stacks.add(new ItemStack(iteminit.FOODPILLAGER));
-        stacks.add(new ItemStack(iteminit.MARINEPILLAGER));
-        stacks.add(new ItemStack(iteminit.NETHERPILLAGER));
-        stacks.add(new ItemStack(iteminit.PRIESTPILLAGER));
-        stacks.add(new ItemStack(iteminit.TELEPORTPILLAGER));
+      .icon(() -> new ItemStack(iteminit.MARINEPILLAGER)).appendItems(stacks -> {
+        if (friendconfig.earthpillager == true) {
+          stacks.add(new ItemStack(iteminit.EARTHPILLAGER));
+        } else {
+          stacks.add(ItemStack.EMPTY);
+        }
+        if (friendconfig.endpillager == true) {
+          stacks.add(new ItemStack(iteminit.ENDPILLAGER));
+        } else {
+          stacks.add(ItemStack.EMPTY);
+        }
+        if (friendconfig.foodpillager == true) {
+          stacks.add(new ItemStack(iteminit.FOODPILLAGER));
+        } else {
+          stacks.add(ItemStack.EMPTY);
+        }
+        if (friendconfig.marinepillager == true) {
+          stacks.add(new ItemStack(iteminit.MARINEPILLAGER));
+        } else {
+          stacks.add(ItemStack.EMPTY);
+        }
+        if (friendconfig.netherpillager == true) {
+          stacks.add(new ItemStack(iteminit.NETHERPILLAGER));
+        } else {
+          stacks.add(ItemStack.EMPTY);
+        }
+        if (friendconfig.priestpillager == true) {
+          stacks.add(new ItemStack(iteminit.PRIESTPILLAGER));
+        } else {
+          stacks.add(ItemStack.EMPTY);
+        }
+        if (friendconfig.teleportpillager == true) {
+          stacks.add(new ItemStack(iteminit.TELEPORTPILLAGER));
+        } else {
+          stacks.add(ItemStack.EMPTY);
+        }
+
         stacks.add(ItemStack.EMPTY);
         stacks.add(ItemStack.EMPTY);
+
         if (friendconfig.fireresistancetotem == true) {
           stacks.add(new ItemStack(iteminit.FIRERESISTANCETOTEM1));
         } else {
@@ -95,6 +125,9 @@ public class itemgroupinit {
         }
         if (friendconfig.luckypillager == true) {
           stacks.add(new ItemStack(iteminit.PILLAGER5));
+        }
+        if (friendconfig.optotem == true) {
+          stacks.add(new ItemStack(iteminit.OPTOTEM));
         }
 
       }).build();

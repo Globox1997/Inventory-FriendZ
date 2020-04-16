@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "invo:fireresistancetotem3"
+    },
+    {
+      "item": "invo:hastetotem3"
+    },
+    {
+      "item": "invo:nightvisiontotem3"
+    },
+    {
+      "item": "invo:resistancetotem3"
+    },
+    {
+      "item": "invo:speedtotem3"
+    },
+    {
+      "item": "invo:strengthtotem3"
+    },
+    {
+      "item": "invo:waterbreathingtotem3"
+    }
+  ],
+  "result": {
+    "item": "invo:optotem",
+    "count": 1
+  }
+}

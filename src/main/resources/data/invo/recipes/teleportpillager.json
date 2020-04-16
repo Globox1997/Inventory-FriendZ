@@ -1,16 +1,22 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " d ",
-    "ded",
-    " d "
+    "fef",
+    "ede",
+    "fof"
   ],
   "key": {
     "d": {
-      "item": "minecraft:diamond"
+      "item": "minecraft:emerald"
     },
     "e": {
-      "item": "minecraft:prismarine_shard"
+      "item": "minecraft:diamond"
+    },
+    "f": {
+      "item": "minecraft:ender_pearl"
+    },
+    "o": {
+      "item": "minecraft:respawn_anchor"
     }
   },
   "result": {
