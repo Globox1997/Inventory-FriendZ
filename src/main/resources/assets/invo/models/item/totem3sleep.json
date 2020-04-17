@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "invo:item/totemsleep"
+    "layer0": "invo:item/totem3sleep"
   }
 }

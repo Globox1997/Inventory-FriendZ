@@ -95,4 +95,9 @@ public class strengthtotem3 extends Item {
 
   }
 
+  @Override
+  public boolean isFireproof() {
+    return true;
+  }
+
 }

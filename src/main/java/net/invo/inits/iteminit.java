@@ -57,6 +57,7 @@ public class iteminit {
     public static final netherpillager NETHERPILLAGER = new netherpillager(new Item.Settings().maxCount(1));
     public static final endpillager ENDPILLAGER = new endpillager(new Item.Settings().maxCount(1));
     public static final priestpillager PRIESTPILLAGER = new priestpillager(new Item.Settings().maxCount(1));
+    public static final orepillager OREPILLAGER = new orepillager(new Item.Settings().maxCount(1));
 
     public static final optotem OPTOTEM = new optotem(new Item.Settings().maxCount(1));
 
@@ -134,6 +135,8 @@ public class iteminit {
         if (friendconfig.priestpillager == true) {
             Registry.register(Registry.ITEM, new Identifier("invo", "priestpillager"), PRIESTPILLAGER);
         }
+
+        Registry.register(Registry.ITEM, new Identifier("invo", "orepillager"), OREPILLAGER);
 
         Registry.register(Registry.ITEM, new Identifier("invo", "blueemerald"), BLUEEMERALD);
         Registry.register(Registry.ITEM, new Identifier("invo", "bluemagma"), BLUEMAGMA);
