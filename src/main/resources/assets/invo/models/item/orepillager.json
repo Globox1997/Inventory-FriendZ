@@ -2,5 +2,97 @@
   "parent": "item/generated",
   "textures": {
     "layer0": "invo:item/orepillager"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "coal": 0.1
+      },
+      "model": "invo:item/orepillagercoal"
+    },
+    {
+      "predicate": {
+        "dia": 0.2
+      },
+      "model": "invo:item/orepillagerdia"
+    },
+    {
+      "predicate": {
+        "iron": 0.3
+      },
+      "model": "invo:item/orepillageriron"
+    },
+    {
+      "predicate": {
+        "red": 0.4
+      },
+      "model": "invo:item/orepillagerred"
+    },
+    {
+      "predicate": {
+        "gold": 0.5
+      },
+      "model": "invo:item/orepillagergold"
+    },
+    {
+      "predicate": {
+        "lapis": 0.6
+      },
+      "model": "invo:item/orepillagerlapis"
+    },
+    {
+      "predicate": {
+        "emerald": 0.7
+      },
+      "model": "invo:item/orepillageremerald"
+    },
+    {
+      "predicate": {
+        "coalfound": 0.15
+      },
+      "model": "invo:item/orepillagercoalquestion"
+    },
+    {
+      "predicate": {
+        "diafound": 0.25
+      },
+      "model": "invo:item/orepillagerdiaquestion"
+    },
+    {
+      "predicate": {
+        "ironfound": 0.35
+      },
+      "model": "invo:item/orepillagerironquestion"
+    },
+    {
+      "predicate": {
+        "redfound": 0.45
+      },
+      "model": "invo:item/orepillagerredquestion"
+    },
+    {
+      "predicate": {
+        "goldfound": 0.55
+      },
+      "model": "invo:item/orepillagergoldquestion"
+    },
+    {
+      "predicate": {
+        "lapisfound": 0.65
+      },
+      "model": "invo:item/orepillagerlapisquestion"
+    },
+    {
+      "predicate": {
+        "emerald": 0.75
+      },
+      "model": "invo:item/orepillageremeraldquestion"
+    },
+    {
+      "predicate": {
+        "sleep": 0.8
+      },
+      "model": "invo:item/orepillagersleep"
+    }
+  ]
 }
