@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "fdf",
+    "def",
+    "olo"
+  ],
+  "key": {
+    "d": {
+      "item": "minecraft:iron_ore"
+    },
+    "e": {
+      "item": "minecraft:emerald"
+    },
+    "f": {
+      "item": "minecraft:lantern"
+    },
+    "o": {
+      "item": "minecraft:prismarine_crystals"
+    },
+    "l": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "result": {
+    "item": "invo:orepillager"
+  }
+}

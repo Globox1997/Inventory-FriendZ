@@ -29,96 +29,100 @@ public class orepillager extends Item {
   public int orechoose = 0;
   public int sleeptimer = 0;
   public int questiontimer = 0;
-  public int questionset = 0;
   public int questionsound = 0;
+  public int orechoosetimer = 0;
   public int craftparticle = 0;
+  private int sleeptime = 1200;
 
   public orepillager(Settings settings) {
     super(settings);
-    this.addPropertyGetter(new Identifier("coal"), (stack, world, entity) -> {
-      if (orechoose == 1) {
-        return 0.1F;
-      }
-      return 0F;
-    });
-    this.addPropertyGetter(new Identifier("dia"), (stack, world, entity) -> {
-      if (orechoose == 2) {
-        return 0.2F;
-      }
-      return 0F;
-    });
-    this.addPropertyGetter(new Identifier("iron"), (stack, world, entity) -> {
-      if (orechoose == 3) {
-        return 0.3F;
-      }
-      return 0F;
-    });
-    this.addPropertyGetter(new Identifier("red"), (stack, world, entity) -> {
-      if (orechoose == 4) {
-        return 0.4F;
-      }
-      return 0F;
-    });
-    this.addPropertyGetter(new Identifier("gold"), (stack, world, entity) -> {
-      if (orechoose == 5) {
-        return 0.5F;
-      }
-      return 0F;
-    });
-    this.addPropertyGetter(new Identifier("lapis"), (stack, world, entity) -> {
-      if (orechoose == 6) {
-        return 0.6F;
-      }
-      return 0F;
-    });
-    this.addPropertyGetter(new Identifier("emerald"), (stack, world, entity) -> {
-      if (orechoose == 7) {
-        return 0.7F;
-      }
-      return 0F;
-    });
 
-    // ore founded
+    // ore found
 
     this.addPropertyGetter(new Identifier("coalfound"), (stack, world, entity) -> {
-      if (questionset == 1) {
+      if (orechoose == 1 && questiontimer != 0) {
         return 0.15F;
       }
       return 0F;
     });
     this.addPropertyGetter(new Identifier("diafound"), (stack, world, entity) -> {
-      if (questionset == 2) {
+      if (orechoose == 2 && questiontimer != 0) {
         return 0.25F;
       }
       return 0F;
     });
     this.addPropertyGetter(new Identifier("ironfound"), (stack, world, entity) -> {
-      if (questionset == 3) {
+      if (orechoose == 3 && questiontimer != 0) {
         return 0.35F;
       }
       return 0F;
     });
     this.addPropertyGetter(new Identifier("redfound"), (stack, world, entity) -> {
-      if (questionset == 4) {
+      if (orechoose == 4 && questiontimer != 0) {
         return 0.45F;
       }
       return 0F;
     });
     this.addPropertyGetter(new Identifier("goldfound"), (stack, world, entity) -> {
-      if (questionset == 5) {
+      if (orechoose == 5 && questiontimer != 0) {
         return 0.55F;
       }
       return 0F;
     });
     this.addPropertyGetter(new Identifier("lapisfound"), (stack, world, entity) -> {
-      if (questionset == 6) {
+      if (orechoose == 6 && questiontimer != 0) {
         return 0.65F;
       }
       return 0F;
     });
     this.addPropertyGetter(new Identifier("emeraldfound"), (stack, world, entity) -> {
-      if (questionset == 7) {
+      if (orechoose == 7 && questiontimer != 0) {
         return 0.75F;
+      }
+      return 0F;
+    });
+
+    // orechoosing
+
+    this.addPropertyGetter(new Identifier("coal"), (stack, world, entity) -> {
+      if (orechoose == 1 && questiontimer == 0) {
+        return 0.1F;
+      }
+      return 0F;
+    });
+    this.addPropertyGetter(new Identifier("dia"), (stack, world, entity) -> {
+      if (orechoose == 2 && questiontimer == 0) {
+        return 0.2F;
+      }
+      return 0F;
+    });
+    this.addPropertyGetter(new Identifier("iron"), (stack, world, entity) -> {
+      if (orechoose == 3 && questiontimer == 0) {
+        return 0.3F;
+      }
+      return 0F;
+    });
+    this.addPropertyGetter(new Identifier("red"), (stack, world, entity) -> {
+      if (orechoose == 4 && questiontimer == 0) {
+        return 0.4F;
+      }
+      return 0F;
+    });
+    this.addPropertyGetter(new Identifier("gold"), (stack, world, entity) -> {
+      if (orechoose == 5 && questiontimer == 0) {
+        return 0.5F;
+      }
+      return 0F;
+    });
+    this.addPropertyGetter(new Identifier("lapis"), (stack, world, entity) -> {
+      if (orechoose == 6 && questiontimer == 0) {
+        return 0.6F;
+      }
+      return 0F;
+    });
+    this.addPropertyGetter(new Identifier("emerald"), (stack, world, entity) -> {
+      if (orechoose == 7 && questiontimer == 0) {
+        return 0.7F;
       }
       return 0F;
     });
@@ -150,39 +154,53 @@ public class orepillager extends Item {
     ItemStack lapis = new ItemStack(Items.LAPIS_ORE);
     ItemStack emerald = new ItemStack(Items.EMERALD_ORE);
 
-    if (user.getEquippedStack(EquipmentSlot.OFFHAND).isItemEqual(coal) && user.isSneaking()) {
+    if (user.getEquippedStack(EquipmentSlot.OFFHAND).isItemEqual(coal) && user.isSneaking() && orechoosetimer == 0) {
       user.getEquippedStack(EquipmentSlot.OFFHAND).decrement(1);
       orechoose = 1;
+      orechoosetimer = 100;
+      user.playSound(SoundEvents.ENTITY_VILLAGER_YES, SoundCategory.NEUTRAL, 1.0F, 1.6F);
       return TypedActionResult.success(itemStack);
     }
-    if (user.getEquippedStack(EquipmentSlot.OFFHAND).isItemEqual(dia) && user.isSneaking()) {
+    if (user.getEquippedStack(EquipmentSlot.OFFHAND).isItemEqual(dia) && user.isSneaking() && orechoosetimer == 0) {
       user.getEquippedStack(EquipmentSlot.OFFHAND).decrement(1);
       orechoose = 2;
+      orechoosetimer = 100;
+      user.playSound(SoundEvents.ENTITY_VILLAGER_YES, SoundCategory.NEUTRAL, 1.0F, 1.6F);
       return TypedActionResult.success(itemStack);
     }
-    if (user.getEquippedStack(EquipmentSlot.OFFHAND).isItemEqual(iron) && user.isSneaking()) {
+    if (user.getEquippedStack(EquipmentSlot.OFFHAND).isItemEqual(iron) && user.isSneaking() && orechoosetimer == 0) {
       user.getEquippedStack(EquipmentSlot.OFFHAND).decrement(1);
       orechoose = 3;
+      orechoosetimer = 100;
+      user.playSound(SoundEvents.ENTITY_VILLAGER_YES, SoundCategory.NEUTRAL, 1.0F, 1.6F);
       return TypedActionResult.success(itemStack);
     }
-    if (user.getEquippedStack(EquipmentSlot.OFFHAND).isItemEqual(red) && user.isSneaking()) {
+    if (user.getEquippedStack(EquipmentSlot.OFFHAND).isItemEqual(red) && user.isSneaking() && orechoosetimer == 0) {
       user.getEquippedStack(EquipmentSlot.OFFHAND).decrement(1);
       orechoose = 4;
+      orechoosetimer = 100;
+      user.playSound(SoundEvents.ENTITY_VILLAGER_YES, SoundCategory.NEUTRAL, 1.0F, 1.6F);
       return TypedActionResult.success(itemStack);
     }
-    if (user.getEquippedStack(EquipmentSlot.OFFHAND).isItemEqual(gold) && user.isSneaking()) {
+    if (user.getEquippedStack(EquipmentSlot.OFFHAND).isItemEqual(gold) && user.isSneaking() && orechoosetimer == 0) {
       user.getEquippedStack(EquipmentSlot.OFFHAND).decrement(1);
       orechoose = 5;
+      orechoosetimer = 100;
+      user.playSound(SoundEvents.ENTITY_VILLAGER_YES, SoundCategory.NEUTRAL, 1.0F, 1.6F);
       return TypedActionResult.success(itemStack);
     }
-    if (user.getEquippedStack(EquipmentSlot.OFFHAND).isItemEqual(lapis) && user.isSneaking()) {
+    if (user.getEquippedStack(EquipmentSlot.OFFHAND).isItemEqual(lapis) && user.isSneaking() && orechoosetimer == 0) {
       user.getEquippedStack(EquipmentSlot.OFFHAND).decrement(1);
       orechoose = 6;
+      orechoosetimer = 100;
+      user.playSound(SoundEvents.ENTITY_VILLAGER_YES, SoundCategory.NEUTRAL, 1.0F, 1.6F);
       return TypedActionResult.success(itemStack);
     }
-    if (user.getEquippedStack(EquipmentSlot.OFFHAND).isItemEqual(emerald) && user.isSneaking()) {
+    if (user.getEquippedStack(EquipmentSlot.OFFHAND).isItemEqual(emerald) && user.isSneaking() && orechoosetimer == 0) {
       user.getEquippedStack(EquipmentSlot.OFFHAND).decrement(1);
       orechoose = 7;
+      orechoosetimer = 100;
+      user.playSound(SoundEvents.ENTITY_VILLAGER_YES, SoundCategory.NEUTRAL, 1.0F, 1.6F);
       return TypedActionResult.success(itemStack);
     }
 
@@ -198,7 +216,7 @@ public class orepillager extends Item {
     if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
         || slot == 8) {
       sleeptimer++;
-      if (sleeptimer < 9600) {
+      if (sleeptimer < sleeptime) {
         // first layer
         BlockPos pos700 = new BlockPos(playerpos.west(3));
         BlockPos pos701 = new BlockPos(playerpos.east(3));
@@ -254,57 +272,30 @@ public class orepillager extends Item {
             || world.getBlockState(pos721).getBlock().equals(orefinder())
             || world.getBlockState(pos722).getBlock().equals(orefinder())
             || world.getBlockState(pos723).getBlock().equals(orefinder())) {
-
-          questiontimer = 100;
-
-          // gamer.sendSystemMessage(new TranslatableText("found"));
-
+          questiontimer++;
         }
       }
-      if (sleeptimer >= 9600) {
-        player.playSound(soundinit.SLEEPEVENT, 0.5F, 1F);
-        sleeptimer = -2400;
+      if (sleeptimer >= sleeptime) {
+        player.playSound(soundinit.SLEEPEVENT, 0.7F, 1F);
+        sleeptimer = -800;
         orechoose = 0;
       }
-      if (questiontimer == 100 || questiontimer == 99) {
-        questioner();
-      }
-      if (questiontimer > 0) {
-        questiontimer--;
-      }
-      if (questiontimer > 0) {
-        questionsound++;
-      }
-      if (questiontimer == 10 || questiontimer == 11) {
+
+      if (questiontimer == 1 || questiontimer == 2) {
         gamer.playSound(SoundEvents.ENTITY_VILLAGER_TRADE, SoundCategory.NEUTRAL, 1.0F, 1.6F);
       }
-      if (questiontimer == 160) {
+      if (questiontimer > 0) {
+        questiontimer++;
+      }
+      if (questiontimer >= 100) {
         questiontimer = 0;
+      }
+      if (orechoosetimer > 0) {
+        orechoosetimer--;
       }
 
     }
 
-  }
-
-  public void questioner() {
-    switch (orechoose) {
-      case 1:
-        questionset = 1;
-      case 2:
-        questionset = 2;
-      case 3:
-        questionset = 3;
-      case 4:
-        questionset = 4;
-      case 5:
-        questionset = 5;
-      case 6:
-        questionset = 6;
-      case 7:
-        questionset = 7;
-      default:
-        questionset = 0;
-    }
   }
 
   public Block orefinder() {
