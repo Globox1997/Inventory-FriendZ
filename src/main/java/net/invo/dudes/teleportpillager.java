@@ -27,12 +27,13 @@ public class teleportpillager extends Item {
   private double zposition;
   private int teleportcounter = 12001;
   private int craftingeffect = 0;
-  private int teleportint = 81;
+  private int teleportint = 91;
   private int sleeptimer = 19;
   private int spawnpointnotset = 19;
   private int spawnpointset = 19;
   private int endertest = 19;
   private int dimensionint;
+  private int endchilltimer = 19;
 
   public teleportpillager(Settings settings) {
     super(settings);
@@ -55,12 +56,11 @@ public class teleportpillager extends Item {
     ItemStack itemStack = user.getStackInHand(hand);
     ItemStack pearl = new ItemStack(Items.ENDER_PEARL);
     int pearlslot = user.inventory.getSlotWithStack(pearl);
-    if (user.isSneaking() && !world.isClient) {
+    if (user.isSneaking()) {
       xposition = user.getX();
       yposition = user.getY();
       zposition = user.getZ();
       spawnpointset = 1;
-
       if (user.dimension.equals(DimensionType.OVERWORLD)) {
         dimensionint = 1;
       }
@@ -71,30 +71,31 @@ public class teleportpillager extends Item {
         dimensionint = 3;
       }
       return TypedActionResult.success(itemStack);
+    } else {
+      if (xposition != 0 && (teleportcounter >= 120) && user.inventory.contains(pearl) && !world.isClient) {
+        teleportint = 0;
+        teleportcounter = 0;
+        user.inventory.removeStack(pearlslot, 1);
+        return TypedActionResult.success(itemStack);
+      } else {
+        if (xposition == 0) {
+          spawnpointnotset = 1;
+          return TypedActionResult.fail(itemStack);
+        } else {
+          if (!user.inventory.contains(pearl)) {
+            endertest = 1;
+            return TypedActionResult.fail(itemStack);
+          } else {
+            if (teleportcounter < 120) {
+              sleeptimer = 1;
+              return TypedActionResult.fail(itemStack);
+            } else {
+              return TypedActionResult.fail(itemStack);
+            }
+          }
+        }
+      }
     }
-
-    if (xposition != 0 && (teleportcounter >= 120 || teleportcounter <= 1) && user.inventory.contains(pearl)
-        && !world.isClient) {
-      teleportint = 0;
-      teleportcounter = 0;
-      user.inventory.removeStack(pearlslot, 1);
-      return TypedActionResult.success(itemStack);
-
-    }
-    if (xposition == 0) {
-      spawnpointnotset = 1;
-      return TypedActionResult.fail(itemStack);
-    }
-    if (!user.inventory.contains(pearl)) {
-      endertest = 1;
-      return TypedActionResult.fail(itemStack);
-    }
-    if (teleportcounter >= 120 || teleportcounter <= 1) {
-      sleeptimer = 1;
-      return TypedActionResult.fail(itemStack);
-    }
-
-    return TypedActionResult.fail(itemStack);
 
   }
 
@@ -110,7 +111,7 @@ public class teleportpillager extends Item {
         player.playSound(soundinit.SLEEPEVENT, 0.7F, 1F);
       }
 
-      if (teleportint < 80) {
+      if (teleportint < 90) {
         Random random = new Random();
         Random random2 = new Random();
         Random random3 = new Random();
@@ -125,7 +126,7 @@ public class teleportpillager extends Item {
         teleportint++;
       }
 
-      if (teleportint == 70 || teleportint == 71) {
+      if (teleportint == 60 || teleportint == 61) {
         if (player.dimension.equals(DimensionType.OVERWORLD) && dimensionint == 2) {
           player.changeDimension(DimensionType.THE_NETHER);
         }
@@ -139,29 +140,28 @@ public class teleportpillager extends Item {
           player.changeDimension(DimensionType.THE_END);
         }
         if (player.dimension.equals(DimensionType.THE_END) && dimensionint == 1) {
+          endchilltimer = 0;
           player.changeDimension(DimensionType.OVERWORLD);
         }
         if (player.dimension.equals(DimensionType.THE_END) && dimensionint == 2) {
+          endchilltimer = 0;
           player.changeDimension(DimensionType.THE_NETHER);
         }
         player.teleport(xposition, yposition, zposition);
         player.playSound(SoundEvents.ENTITY_ENDERMAN_TELEPORT, 0.8F, 1.0F);
       }
-
       if (sleeptimer < 18) {
         sleeptimer++;
         if (sleeptimer == 16) {
           player.sendSystemMessage(new TranslatableText("item.invo.teleportpillagermissing"));
         }
       }
-
       if (spawnpointnotset < 18) {
         spawnpointnotset++;
         if (spawnpointnotset == 16) {
           player.sendSystemMessage(new TranslatableText("item.invo.teleportpillagernotset"));
         }
       }
-
       if (spawnpointset < 18) {
         spawnpointset++;
         if (spawnpointset == 16) {
@@ -169,11 +169,17 @@ public class teleportpillager extends Item {
 
         }
       }
-
       if (endertest < 18) {
         endertest++;
         if (endertest == 16) {
           player.sendSystemMessage(new TranslatableText("item.invo.teleportpillagerpearl"));
+
+        }
+      }
+      if (endchilltimer < 18) {
+        endchilltimer++;
+        if (endchilltimer == 16) {
+          player.teleport(xposition, yposition, zposition);
 
         }
       }
