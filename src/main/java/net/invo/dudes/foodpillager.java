@@ -52,7 +52,7 @@ public class foodpillager extends Item {
 
   public ItemStack loot() {
     Random random = new Random();
-    int randomNumber = random.nextInt() % 7;
+    int randomNumber = random.nextInt() % 11;
     if (randomNumber < 0) {
       randomNumber = randomNumber * (-1);
     }
@@ -72,6 +72,14 @@ public class foodpillager extends Item {
         return new ItemStack(Items.WHEAT);
       case 6:
         return new ItemStack(Items.COOKIE);
+      case 7:
+        return new ItemStack(Items.POTATO);
+      case 8:
+        return new ItemStack(Items.APPLE);
+      case 9:
+        return new ItemStack(Items.CARROT);
+      case 10:
+        return new ItemStack(Items.WHEAT);
       default:
         return new ItemStack(Items.POTATO);
 

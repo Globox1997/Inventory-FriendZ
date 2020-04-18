@@ -52,7 +52,7 @@ public class endpillager extends Item {
 
   public ItemStack loot() {
     Random random = new Random();
-    int randomNumber = random.nextInt() % 5;
+    int randomNumber = random.nextInt() % 8;
     if (randomNumber < 0) {
       randomNumber = randomNumber * (-1);
     }
@@ -68,6 +68,12 @@ public class endpillager extends Item {
         return new ItemStack(Items.PHANTOM_MEMBRANE);
       case 4:
         return new ItemStack(Items.SHULKER_SHELL);
+      case 5:
+        return new ItemStack(Items.CHORUS_FRUIT);
+      case 6:
+        return new ItemStack(Items.ENDER_PEARL);
+      case 7:
+        return new ItemStack(Items.DRAGON_BREATH);
       default:
         return new ItemStack(Items.CHORUS_FRUIT);
 

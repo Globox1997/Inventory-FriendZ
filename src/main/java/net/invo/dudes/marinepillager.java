@@ -52,7 +52,7 @@ public class marinepillager extends Item {
 
   public ItemStack loot() {
     Random random = new Random();
-    int randomNumber = random.nextInt() % 8;
+    int randomNumber = random.nextInt() % 13;
     if (randomNumber < 0) {
       randomNumber = randomNumber * (-1);
     }
@@ -65,18 +65,28 @@ public class marinepillager extends Item {
       case 2:
         return new ItemStack(Items.PRISMARINE_CRYSTALS);
       case 3:
-        return new ItemStack(Items.BRAIN_CORAL);
+        return new ItemStack(Items.GLASS_BOTTLE);
       case 4:
-        return new ItemStack(Items.BUBBLE_CORAL);
+        return new ItemStack(Items.SALMON);
       case 5:
-        return new ItemStack(Items.FIRE_CORAL);
+        return new ItemStack(Items.TROPICAL_FISH);
       case 6:
-        return new ItemStack(Items.HORN_CORAL);
+        return new ItemStack(Items.PUFFERFISH);
       case 7:
-        return new ItemStack(Items.TUBE_CORAL);
+        return new ItemStack(Items.COD);
+      case 8:
+        return new ItemStack(Items.PRISMARINE_CRYSTALS);
+      case 9:
+        return new ItemStack(Items.GLASS_BOTTLE);
+      case 10:
+        return new ItemStack(Items.SALMON);
+      case 11:
+        return new ItemStack(Items.TROPICAL_FISH);
+      case 12:
+        return new ItemStack(Items.COD);
 
       default:
-        return new ItemStack(Items.TUBE_CORAL);
+        return new ItemStack(Items.COD);
 
     }
 

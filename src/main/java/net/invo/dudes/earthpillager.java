@@ -52,7 +52,7 @@ public class earthpillager extends Item {
 
   public ItemStack loot() {
     Random random = new Random();
-    int randomNumber = random.nextInt() % 6;
+    int randomNumber = random.nextInt() % 11;
     if (randomNumber < 0) {
       randomNumber = randomNumber * (-1);
     }
@@ -70,6 +70,16 @@ public class earthpillager extends Item {
         return new ItemStack(Items.BONE_MEAL);
       case 5:
         return new ItemStack(Items.EMERALD);
+      case 6:
+        return new ItemStack(Items.GUNPOWDER);
+      case 7:
+        return new ItemStack(Items.CLAY_BALL);
+      case 8:
+        return new ItemStack(Items.LEATHER);
+      case 9:
+        return new ItemStack(Items.SLIME_BALL);
+      case 10:
+        return new ItemStack(Items.BONE_MEAL);
       default:
         return new ItemStack(Items.GUNPOWDER);
 
