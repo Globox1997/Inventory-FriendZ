@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "fdf",
+    "odo",
     "def",
-    "olo"
+    "lol"
   ],
   "key": {
     "d": {
@@ -16,10 +16,10 @@
       "item": "minecraft:lantern"
     },
     "o": {
-      "item": "minecraft:prismarine_crystals"
+      "item": "minecraft:gold_ore"
     },
     "l": {
-      "item": "minecraft:water_bucket"
+      "item": "minecraft:enchanted_book"
     }
   },
   "result": {

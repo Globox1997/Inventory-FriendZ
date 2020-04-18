@@ -42,7 +42,7 @@ public class pillager5 extends Item {
         StatusEffectInstance badluck = new StatusEffectInstance(StatusEffect.byRawId(27), 0, 0, false, false);
         LivingEntity player = (LivingEntity) entity;
         if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
-                || slot == 8) {
+                || slot == 8 && !world.isClient) {
             count++;
             if (count >= 9600) {
                 count = -2400;

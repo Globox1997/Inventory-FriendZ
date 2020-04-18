@@ -84,7 +84,7 @@
     },
     {
       "predicate": {
-        "emerald": 0.75
+        "emeraldfound": 0.75
       },
       "model": "invo:item/orepillageremeraldquestion"
     },

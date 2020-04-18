@@ -135,8 +135,9 @@ public class iteminit {
         if (friendconfig.priestpillager == true) {
             Registry.register(Registry.ITEM, new Identifier("invo", "priestpillager"), PRIESTPILLAGER);
         }
-
-        Registry.register(Registry.ITEM, new Identifier("invo", "orepillager"), OREPILLAGER);
+        if (friendconfig.orepillager == true) {
+            Registry.register(Registry.ITEM, new Identifier("invo", "orepillager"), OREPILLAGER);
+        }
 
         Registry.register(Registry.ITEM, new Identifier("invo", "blueemerald"), BLUEEMERALD);
         Registry.register(Registry.ITEM, new Identifier("invo", "bluemagma"), BLUEMAGMA);

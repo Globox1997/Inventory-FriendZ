@@ -27,7 +27,7 @@ public class optotem extends Item {
     LivingEntity player = (LivingEntity) entity;
     PlayerEntity gamer = (PlayerEntity) player;
     if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
-        || slot == 8) {
+        || slot == 8 && !world.isClient) {
 
       gamer.abilities.allowFlying = true;
     }

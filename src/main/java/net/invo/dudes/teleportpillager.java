@@ -22,18 +22,17 @@ import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
 
 public class teleportpillager extends Item {
-  double xposition = 0;
-  double yposition;
-  double zposition;
-  public int teleportcounter = 12001;
-  public int craftingeffect = 0;
-  public int teleportint = 81;
-  public int sleeptimer = 19;
-  public int spawnpointnotset = 19;
-  public int spawnpointset = 19;
-  public int dimensiontest = 19;
-  public int endertest = 19;
-  boolean teleportok = true;
+  private double xposition = 0;
+  private double yposition;
+  private double zposition;
+  private int teleportcounter = 12001;
+  private int craftingeffect = 0;
+  private int teleportint = 81;
+  private int sleeptimer = 19;
+  private int spawnpointnotset = 19;
+  private int spawnpointset = 19;
+  private int endertest = 19;
+  private int dimensionint;
 
   public teleportpillager(Settings settings) {
     super(settings);
@@ -56,46 +55,53 @@ public class teleportpillager extends Item {
     ItemStack itemStack = user.getStackInHand(hand);
     ItemStack pearl = new ItemStack(Items.ENDER_PEARL);
     int pearlslot = user.inventory.getSlotWithStack(pearl);
-    if (user.isSneaking() && user.dimension.equals(DimensionType.OVERWORLD)) {
+    if (user.isSneaking() && !world.isClient) {
       xposition = user.getX();
       yposition = user.getY();
       zposition = user.getZ();
       spawnpointset = 1;
+
+      if (user.dimension.equals(DimensionType.OVERWORLD)) {
+        dimensionint = 1;
+      }
+      if (user.dimension.equals(DimensionType.THE_NETHER)) {
+        dimensionint = 2;
+      }
+      if (user.dimension.equals(DimensionType.THE_END)) {
+        dimensionint = 3;
+      }
       return TypedActionResult.success(itemStack);
     }
-    if (user.isSneaking() && !user.dimension.equals(DimensionType.OVERWORLD)) {
-      dimensiontest = 0;
-    }
-    if (xposition != 0 && (teleportcounter >= 120 || teleportcounter <= 1) && user.inventory.contains(pearl)) {
+
+    if (xposition != 0 && (teleportcounter >= 120 || teleportcounter <= 1) && user.inventory.contains(pearl)
+        && !world.isClient) {
       teleportint = 0;
       teleportcounter = 0;
       user.inventory.removeStack(pearlslot, 1);
       return TypedActionResult.success(itemStack);
 
-    } else {
-      if (xposition == 0) {
-        spawnpointnotset = 1;
-        return TypedActionResult.fail(itemStack);
-
-      } else {
-        if (!user.inventory.contains(pearl)) {
-          endertest = 1;
-          return TypedActionResult.fail(itemStack);
-
-        } else {
-          sleeptimer = 1;
-
-          return TypedActionResult.fail(itemStack);
-        }
-      }
     }
+    if (xposition == 0) {
+      spawnpointnotset = 1;
+      return TypedActionResult.fail(itemStack);
+    }
+    if (!user.inventory.contains(pearl)) {
+      endertest = 1;
+      return TypedActionResult.fail(itemStack);
+    }
+    if (teleportcounter >= 120 || teleportcounter <= 1) {
+      sleeptimer = 1;
+      return TypedActionResult.fail(itemStack);
+    }
+
+    return TypedActionResult.fail(itemStack);
 
   }
 
   public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
     LivingEntity player = (LivingEntity) entity;
     if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
-        || slot == 8) {
+        || slot == 8 && !world.isClient) {
       if (teleportcounter < 120) { // 12000
         teleportcounter++;
 
@@ -119,9 +125,24 @@ public class teleportpillager extends Item {
         teleportint++;
       }
 
-      if (teleportint == 58 || teleportint == 57) {
-        if (!player.dimension.equals(DimensionType.OVERWORLD)) {
+      if (teleportint == 70 || teleportint == 71) {
+        if (player.dimension.equals(DimensionType.OVERWORLD) && dimensionint == 2) {
+          player.changeDimension(DimensionType.THE_NETHER);
+        }
+        if (player.dimension.equals(DimensionType.OVERWORLD) && dimensionint == 3) {
+          player.changeDimension(DimensionType.THE_END);
+        }
+        if (player.dimension.equals(DimensionType.THE_NETHER) && dimensionint == 1) {
           player.changeDimension(DimensionType.OVERWORLD);
+        }
+        if (player.dimension.equals(DimensionType.THE_NETHER) && dimensionint == 3) {
+          player.changeDimension(DimensionType.THE_END);
+        }
+        if (player.dimension.equals(DimensionType.THE_END) && dimensionint == 1) {
+          player.changeDimension(DimensionType.OVERWORLD);
+        }
+        if (player.dimension.equals(DimensionType.THE_END) && dimensionint == 2) {
+          player.changeDimension(DimensionType.THE_NETHER);
         }
         player.teleport(xposition, yposition, zposition);
         player.playSound(SoundEvents.ENTITY_ENDERMAN_TELEPORT, 0.8F, 1.0F);
@@ -149,14 +170,6 @@ public class teleportpillager extends Item {
         }
       }
 
-      if (dimensiontest < 18) {
-        dimensiontest++;
-        if (dimensiontest == 16) {
-          player.sendSystemMessage(new TranslatableText("item.invo.teleportpillagerdimension"));
-
-        }
-      }
-
       if (endertest < 18) {
         endertest++;
         if (endertest == 16) {
@@ -166,10 +179,11 @@ public class teleportpillager extends Item {
       }
 
     }
+
   }
 
   public void onCraft(ItemStack stack, World world, PlayerEntity player) {
-    while (craftingeffect < 60) {
+    while (craftingeffect < 60 && world.isClient) {
       Random random = new Random();
       Random random2 = new Random();
       Random random3 = new Random();

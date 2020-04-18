@@ -45,8 +45,11 @@ public class itemgroupinit {
         } else {
           stacks.add(ItemStack.EMPTY);
         }
-
-        stacks.add(ItemStack.EMPTY);
+        if (friendconfig.orepillager == true) {
+          stacks.add(new ItemStack(iteminit.OREPILLAGER));
+        } else {
+          stacks.add(ItemStack.EMPTY);
+        }
         stacks.add(ItemStack.EMPTY);
 
         if (friendconfig.fireresistancetotem == true) {

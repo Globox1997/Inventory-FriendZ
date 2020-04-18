@@ -37,7 +37,7 @@ public class netherpillager extends Item {
     int nuggetslot = gamer.inventory.getSlotWithStack(nugget);
 
     if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
-        || slot == 8) {
+        || slot == 8 && !world.isClient) {
       if (gamer.inventory.contains(nugget)) {
         itemtimer++;
         if (itemtimer >= 1350) {

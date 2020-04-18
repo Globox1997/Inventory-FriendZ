@@ -18,9 +18,9 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 public class priestpillager extends Item {
-  public static int itemtimer = 0;
-  public static int effect = 0;
-  public float lifegen = 0;
+  private int itemtimer = 0;
+  private int effect = 0;
+  private float lifegen = 0;
 
   public priestpillager(Settings settings) {
     super(settings);
@@ -60,15 +60,16 @@ public class priestpillager extends Item {
   @Override
   public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
     ItemStack itemStack = user.getStackInHand(hand);
-    if (lifegen > 0) {
+
+    if (lifegen > 0 && !world.isClient) {
       float life = user.getHealth();
       user.setHealth(life + (lifegen * 2));
       user.playSound(SoundEvents.ENTITY_VILLAGER_CELEBRATE, 0.8F, 1.5F);
       lifegen = 0;
       return TypedActionResult.success(itemStack);
 
-    }
-    return TypedActionResult.fail(itemStack);
+    } else
+      return TypedActionResult.pass(itemStack);
   }
 
   public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
@@ -76,7 +77,7 @@ public class priestpillager extends Item {
         || slot == 8) {
       if (lifegen < 4) {
         itemtimer++;
-        if (itemtimer >= 1000) {
+        if (itemtimer >= 800) {
           lifegen = lifegen + 1F;
           itemtimer = 0;
         }

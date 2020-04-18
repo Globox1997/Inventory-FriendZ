@@ -24,6 +24,7 @@ public class friendconfig implements ConfigData {
     public static boolean netherpillager = true;
     public static boolean priestpillager = true;
     public static boolean teleportpillager = true;
+    public static boolean orepillager = true;
 
     public static boolean invisiblepillager = true; // false
     public static boolean fallingpillager = true;

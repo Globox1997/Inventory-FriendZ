@@ -41,7 +41,7 @@ public class pillager3 extends Item {
         StatusEffectInstance falling = new StatusEffectInstance(StatusEffect.byRawId(28), 0, 0, false, false);
         LivingEntity player = (LivingEntity) entity;
         if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
-                || slot == 8) {
+                || slot == 8 && !world.isClient) {
             count++;
             if (count >= 9600) {
                 count = -2400;
