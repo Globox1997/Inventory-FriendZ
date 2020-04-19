@@ -26,10 +26,10 @@ public class friendconfig implements ConfigData {
     public static boolean teleportpillager = true;
     public static boolean orepillager = true;
 
-    public static boolean invisiblepillager = true; // false
-    public static boolean fallingpillager = true;
-    public static boolean conduitingpillager = true;
-    public static boolean luckypillager = true;
-    public static boolean optotem = true;
+    public static boolean invisiblepillager = false;
+    public static boolean fallingpillager = false;
+    public static boolean conduitingpillager = false;
+    public static boolean luckypillager = false;
+    public static boolean optotem = false;
 
 }
