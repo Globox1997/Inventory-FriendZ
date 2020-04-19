@@ -38,7 +38,7 @@ public class teleportpillager extends Item {
   public teleportpillager(Settings settings) {
     super(settings);
     this.addPropertyGetter(new Identifier("sleep"), (stack, world, entity) -> {
-      if (teleportcounter > 0 && teleportcounter < 120) { // 12000
+      if (teleportcounter > 0 && teleportcounter < 12000) { // 12000
         return 1F;
       }
       return 0F;
@@ -74,7 +74,7 @@ public class teleportpillager extends Item {
       }
       return TypedActionResult.success(itemStack);
     } else {
-      if (xposition != 0 && (teleportcounter >= 120) && user.inventory.contains(pearl) && !world.isClient) {
+      if (xposition != 0 && (teleportcounter >= 12000) && user.inventory.contains(pearl) && !world.isClient) {
         teleportint = 0;
         teleportcounter = 0;
         user.inventory.removeStack(pearlslot, 1);
@@ -88,7 +88,7 @@ public class teleportpillager extends Item {
             endertest = 1;
             return TypedActionResult.fail(itemStack);
           } else {
-            if (teleportcounter < 120) {
+            if (teleportcounter < 12000) {
               sleeptimer = 1;
               return TypedActionResult.fail(itemStack);
             } else {
@@ -105,7 +105,7 @@ public class teleportpillager extends Item {
     LivingEntity player = (LivingEntity) entity;
     if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
         || slot == 8 && !world.isClient) {
-      if (teleportcounter < 120) { // 12000
+      if (teleportcounter < 12000) { // 12000
         teleportcounter++;
 
       }
