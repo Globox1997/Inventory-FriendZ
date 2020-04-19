@@ -139,9 +139,10 @@ public class orepillager extends Item {
 
   @Override
   public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
-
     tooltip.add(new TranslatableText("item.invo.orepillager.tooltip"));
     tooltip.add(new TranslatableText("item.invo.orepillager.tooltip2"));
+    tooltip.add(new TranslatableText("item.invo.orepillager.tooltip3"));
+    tooltip.add(new TranslatableText("item.invo.orepillager.tooltip4"));
   }
 
   @Override
@@ -300,7 +301,7 @@ public class orepillager extends Item {
       if (questiontimer > 0) {
         questiontimer++;
       }
-      if (questiontimer >= 100) {
+      if (questiontimer >= 120) {
         questiontimer = 0;
       }
       if (orechoosetimer > 0) {

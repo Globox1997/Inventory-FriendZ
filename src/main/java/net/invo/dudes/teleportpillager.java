@@ -49,6 +49,8 @@ public class teleportpillager extends Item {
   public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
     tooltip.add(new TranslatableText("item.invo.teleportpillager.tooltip"));
     tooltip.add(new TranslatableText("item.invo.teleportpillager.tooltip2"));
+    tooltip.add(new TranslatableText("item.invo.teleportpillager.tooltip3"));
+    tooltip.add(new TranslatableText("item.invo.teleportpillager.tooltip4"));
   }
 
   @Override

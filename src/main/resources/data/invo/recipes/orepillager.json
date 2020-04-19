@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "odo",
+    "lol",
     "def",
     "lol"
   ],
@@ -16,7 +16,7 @@
       "item": "minecraft:lantern"
     },
     "o": {
-      "item": "minecraft:gold_ore"
+      "item": "minecraft:map"
     },
     "l": {
       "item": "minecraft:enchanted_book"
