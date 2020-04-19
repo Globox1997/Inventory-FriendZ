@@ -19,7 +19,7 @@
       "net.invo.friends"
     ],
     "modmenu": [
-      "net.invo.config.modmenu"
+      "net.invo.config.modmenuintegration"
     ],
     "client": [
       "net.invo.friendsclient"

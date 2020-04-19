@@ -6,28 +6,31 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
 
-import java.util.Optional;
+//import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Supplier;
+//import java.util.function.Supplier;
 
 @Environment(EnvType.CLIENT)
 
-public class modmenu implements ModMenuApi {
+public class modmenuintegration implements ModMenuApi {
 
     @Override
     public String getModId() {
         return "invo";
     }
 
-    @Override
+    // @Override
+    // public Optional<Supplier<Screen>> getConfigScreen(Screen screen) {
+    // return Optional.of(AutoConfig.getConfigScreen(friendconfig.class, screen));
+    // }
 
-    public Optional<Supplier<Screen>> getConfigScreen(Screen screen) {
-        return Optional.of(AutoConfig.getConfigScreen(friendconfig.class, screen));
-    }
-
+    // @Override
+    // public Function<Screen, ? extends Screen> getConfigScreenFactory() {
+    // return screen -> AutoConfig.getConfigScreen(friendconfig.class,
+    // screen).get();
+    // }
     @Override
     public Function<Screen, ? extends Screen> getConfigScreenFactory() {
         return screen -> AutoConfig.getConfigScreen(friendconfig.class, screen).get();
     }
-
 }
