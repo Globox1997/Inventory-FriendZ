@@ -1,5 +1,6 @@
 package net.invo.inits;
 
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.invo.config.friendconfig;
 import net.minecraft.item.ItemGroup;
@@ -10,79 +11,79 @@ public class itemgroupinit {
 
   public static final ItemGroup invo_GROUP = FabricItemGroupBuilder.create(new Identifier("invo", "friends"))
       .icon(() -> new ItemStack(iteminit.MARINEPILLAGER)).appendItems(stacks -> {
-        if (friendconfig.earthpillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().earthpillager) {
           stacks.add(new ItemStack(iteminit.EARTHPILLAGER));
         } else {
           stacks.add(ItemStack.EMPTY);
         }
-        if (friendconfig.endpillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().endpillager) {
           stacks.add(new ItemStack(iteminit.ENDPILLAGER));
         } else {
           stacks.add(ItemStack.EMPTY);
         }
-        if (friendconfig.foodpillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().foodpillager) {
           stacks.add(new ItemStack(iteminit.FOODPILLAGER));
         } else {
           stacks.add(ItemStack.EMPTY);
         }
-        if (friendconfig.marinepillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().marinepillager) {
           stacks.add(new ItemStack(iteminit.MARINEPILLAGER));
         } else {
           stacks.add(ItemStack.EMPTY);
         }
-        if (friendconfig.netherpillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().netherpillager) {
           stacks.add(new ItemStack(iteminit.NETHERPILLAGER));
         } else {
           stacks.add(ItemStack.EMPTY);
         }
-        if (friendconfig.priestpillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().priestpillager) {
           stacks.add(new ItemStack(iteminit.PRIESTPILLAGER));
         } else {
           stacks.add(ItemStack.EMPTY);
         }
-        if (friendconfig.teleportpillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().teleportpillager) {
           stacks.add(new ItemStack(iteminit.TELEPORTPILLAGER));
         } else {
           stacks.add(ItemStack.EMPTY);
         }
-        if (friendconfig.orepillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().orepillager) {
           stacks.add(new ItemStack(iteminit.OREPILLAGER));
         } else {
           stacks.add(ItemStack.EMPTY);
         }
         stacks.add(ItemStack.EMPTY);
 
-        if (friendconfig.fireresistancetotem == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().fireresistancetotem) {
           stacks.add(new ItemStack(iteminit.FIRERESISTANCETOTEM1));
         } else {
           stacks.add(ItemStack.EMPTY);
         }
-        if (friendconfig.hastetotem == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().hastetotem) {
           stacks.add(new ItemStack(iteminit.HASTETOTEM1));
         } else {
           stacks.add(ItemStack.EMPTY);
         }
-        if (friendconfig.nightvisiontotem == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().nightvisiontotem) {
           stacks.add(new ItemStack(iteminit.NIGHTVISIONTOTEM1));
         } else {
           stacks.add(ItemStack.EMPTY);
         }
-        if (friendconfig.resistancetotem == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().resistancetotem) {
           stacks.add(new ItemStack(iteminit.RESISTANCETOTEM1));
         } else {
           stacks.add(ItemStack.EMPTY);
         }
-        if (friendconfig.speedtotem == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().speedtotem) {
           stacks.add(new ItemStack(iteminit.SPEEDTOTEM1));
         } else {
           stacks.add(ItemStack.EMPTY);
         }
-        if (friendconfig.strengthtotem == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().strengthtotem) {
           stacks.add(new ItemStack(iteminit.STRENGTHTOTEM1));
         } else {
           stacks.add(ItemStack.EMPTY);
         }
-        if (friendconfig.waterbreathtotem == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().waterbreathtotem) {
           stacks.add(new ItemStack(iteminit.WATERBREATHINGTOTEM1));
         } else {
           stacks.add(ItemStack.EMPTY);
@@ -117,19 +118,19 @@ public class itemgroupinit {
         stacks.add(new ItemStack(iteminit.BLUEEYE));
         stacks.add(ItemStack.EMPTY);
 
-        if (friendconfig.invisiblepillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().invisiblepillager) {
           stacks.add(new ItemStack(iteminit.PILLAGER1));
         }
-        if (friendconfig.fallingpillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().fallingpillager) {
           stacks.add(new ItemStack(iteminit.PILLAGER3));
         }
-        if (friendconfig.conduitingpillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().conduitingpillager) {
           stacks.add(new ItemStack(iteminit.PILLAGER4));
         }
-        if (friendconfig.luckypillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().luckypillager) {
           stacks.add(new ItemStack(iteminit.PILLAGER5));
         }
-        if (friendconfig.optotem == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().optotem) {
           stacks.add(new ItemStack(iteminit.OPTOTEM));
         }
 

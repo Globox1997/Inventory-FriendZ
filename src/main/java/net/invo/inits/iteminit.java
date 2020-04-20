@@ -1,5 +1,6 @@
 package net.invo.inits;
 
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.invo.config.friendconfig;
 import net.invo.dudes.*;
 import net.invo.items.*;
@@ -63,38 +64,37 @@ public class iteminit {
 
     public static void init() {
 
-        if (friendconfig.invisiblepillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().invisiblepillager) {
             Registry.register(Registry.ITEM, new Identifier("invo", "pillager1"), PILLAGER1);
         }
-        if (friendconfig.fallingpillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().fallingpillager) {
             Registry.register(Registry.ITEM, new Identifier("invo", "pillager3"), PILLAGER3);
         }
-        if (friendconfig.conduitingpillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().conduitingpillager) {
             Registry.register(Registry.ITEM, new Identifier("invo", "pillager4"), PILLAGER4);
         }
-        if (friendconfig.luckypillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().luckypillager) {
             Registry.register(Registry.ITEM, new Identifier("invo", "pillager5"), PILLAGER5);
         }
-        if (friendconfig.fireresistancetotem == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().fireresistancetotem) {
             Registry.register(Registry.ITEM, new Identifier("invo", "fireresistancetotem1"), FIRERESISTANCETOTEM1);
         }
-
-        if (friendconfig.fireresistancetotem == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().hastetotem) {
             Registry.register(Registry.ITEM, new Identifier("invo", "hastetotem1"), HASTETOTEM1);
         }
-        if (friendconfig.fireresistancetotem == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().nightvisiontotem) {
             Registry.register(Registry.ITEM, new Identifier("invo", "nightvisiontotem1"), NIGHTVISIONTOTEM1);
         }
-        if (friendconfig.fireresistancetotem == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().resistancetotem) {
             Registry.register(Registry.ITEM, new Identifier("invo", "resistancetotem1"), RESISTANCETOTEM1);
         }
-        if (friendconfig.fireresistancetotem == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().speedtotem) {
             Registry.register(Registry.ITEM, new Identifier("invo", "speedtotem1"), SPEEDTOTEM1);
         }
-        if (friendconfig.fireresistancetotem == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().strengthtotem) {
             Registry.register(Registry.ITEM, new Identifier("invo", "strengthtotem1"), STRENGTHTOTEM1);
         }
-        if (friendconfig.fireresistancetotem == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().waterbreathtotem) {
             Registry.register(Registry.ITEM, new Identifier("invo", "waterbreathingtotem1"), WATERBREATHINGTOTEM1);
         }
 
@@ -114,28 +114,28 @@ public class iteminit {
         Registry.register(Registry.ITEM, new Identifier("invo", "waterbreathingtotem2"), WATERBREATHINGTOTEM2);
         Registry.register(Registry.ITEM, new Identifier("invo", "waterbreathingtotem3"), WATERBREATHINGTOTEM3);
 
-        if (friendconfig.teleportpillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().teleportpillager) {
             Registry.register(Registry.ITEM, new Identifier("invo", "teleportpillager"), TELEPORTPILLAGER);
         }
-        if (friendconfig.marinepillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().marinepillager) {
             Registry.register(Registry.ITEM, new Identifier("invo", "marinepillager"), MARINEPILLAGER);
         }
-        if (friendconfig.earthpillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().earthpillager) {
             Registry.register(Registry.ITEM, new Identifier("invo", "earthpillager"), EARTHPILLAGER);
         }
-        if (friendconfig.endpillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().endpillager) {
             Registry.register(Registry.ITEM, new Identifier("invo", "endpillager"), ENDPILLAGER);
         }
-        if (friendconfig.foodpillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().foodpillager) {
             Registry.register(Registry.ITEM, new Identifier("invo", "foodpillager"), FOODPILLAGER);
         }
-        if (friendconfig.netherpillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().netherpillager) {
             Registry.register(Registry.ITEM, new Identifier("invo", "netherpillager"), NETHERPILLAGER);
         }
-        if (friendconfig.priestpillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().priestpillager) {
             Registry.register(Registry.ITEM, new Identifier("invo", "priestpillager"), PRIESTPILLAGER);
         }
-        if (friendconfig.orepillager == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().orepillager) {
             Registry.register(Registry.ITEM, new Identifier("invo", "orepillager"), OREPILLAGER);
         }
 
@@ -147,7 +147,7 @@ public class iteminit {
         Registry.register(Registry.ITEM, new Identifier("invo", "blueingot"), BLUEINGOT);
         Registry.register(Registry.ITEM, new Identifier("invo", "blueeye"), BLUEEYE);
 
-        if (friendconfig.optotem == true) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().optotem) {
             Registry.register(Registry.ITEM, new Identifier("invo", "optotem"), OPTOTEM);
         }
 
