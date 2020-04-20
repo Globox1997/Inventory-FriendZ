@@ -9,7 +9,6 @@ import net.minecraft.client.gui.screen.Screen;
 
 import java.util.Optional;
 import java.util.function.Function;
-
 import java.util.function.Supplier;
 
 @SuppressWarnings("unused")
@@ -21,11 +20,6 @@ public class modmenuintegration implements ModMenuApi {
     public String getModId() {
         return "invo";
     }
-
-    // @Override
-    // public Optional<Supplier<Screen>> getConfigScreen(Screen screen) {
-    // return Optional.of(AutoConfig.getConfigScreen(friendconfig.class, screen));
-    // }
 
     @Override
     public Function<Screen, ? extends Screen> getConfigScreenFactory() {
