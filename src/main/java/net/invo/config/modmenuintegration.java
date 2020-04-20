@@ -22,10 +22,10 @@ public class modmenuintegration implements ModMenuApi {
         return "invo";
     }
 
-    @Override
-    public Optional<Supplier<Screen>> getConfigScreen(Screen screen) {
-        return Optional.of(AutoConfig.getConfigScreen(friendconfig.class, screen));
-    }
+    // @Override
+    // public Optional<Supplier<Screen>> getConfigScreen(Screen screen) {
+    // return Optional.of(AutoConfig.getConfigScreen(friendconfig.class, screen));
+    // }
 
     @Override
     public Function<Screen, ? extends Screen> getConfigScreenFactory() {
