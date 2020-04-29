@@ -20,7 +20,7 @@
     },
     "totemactivating": {
         "sounds": [
-            "invo:totemactivate"
+            "invo:totemactivating"
         ]
     },
     "totemsleep": {

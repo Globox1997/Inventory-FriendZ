@@ -52,7 +52,7 @@ public class fireresistancetotem1 extends Item {
 
     if (count == 0) {
       count = 1;
-      user.playSound(soundinit.TOTEMACTIVATEEVENT, 0.2F, 0.8F);
+      user.playSound(soundinit.TOTEMACTIVATEEVENT, 0.1F, 0.8F);
       return TypedActionResult.success(itemStack);
     } else {
       return TypedActionResult.fail(itemStack);
@@ -72,7 +72,7 @@ public class fireresistancetotem1 extends Item {
 
       if (count >= 1200) {
         count = -7200;
-        player.playSound(soundinit.TOTEMSLEEPEVENT, 0.2F, 0.8F);
+        player.playSound(soundinit.TOTEMSLEEPEVENT, 0.1F, 0.8F);
       }
       if (count > 0) {
         player.addStatusEffect(fire);

@@ -3,6 +3,7 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
+import net.invo.inits.soundinit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -12,10 +13,11 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 public class strengthtotem3 extends Item {
@@ -45,17 +47,32 @@ public class strengthtotem3 extends Item {
   }
 
   @Override
+  public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+    ItemStack itemStack = user.getStackInHand(hand);
+
+    if (count == 0) {
+      count = 1;
+      user.playSound(soundinit.TOTEMACTIVATEEVENT, 0.1F, 0.8F);
+      return TypedActionResult.success(itemStack);
+    } else {
+      return TypedActionResult.fail(itemStack);
+    }
+  }
+
+  @Override
   public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
     StatusEffectInstance strength = new StatusEffectInstance(StatusEffect.byRawId(5), 8, 0, false, false);
     LivingEntity player = (LivingEntity) entity;
     if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
         || slot == 8 && !world.isClient) {
-      count++;
+      if (count != 0) {
+        count++;
+      }
       if (count >= 9600) {
         count = -2400;
-        player.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 0.5F, 0.8F);
+        player.playSound(soundinit.TOTEMSLEEPEVENT, 0.1F, 0.8F);
       }
-      if (count >= 0) {
+      if (count > 0) {
         player.addStatusEffect(strength);
       }
 
