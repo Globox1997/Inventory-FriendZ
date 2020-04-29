@@ -3,20 +3,17 @@
   "pattern": [
     "fdf",
     "ded",
-    "fof"
+    "fdf"
   ],
   "key": {
     "d": {
-      "item": "minecraft:diamond"
+      "item": "invo:bluemagma"
     },
     "e": {
       "item": "invo:fireresistancetotem1"
     },
     "f": {
       "item": "minecraft:crying_obsidian"
-    },
-    "o": {
-      "item": "minecraft:diamond_block"
     }
   },
   "result": {

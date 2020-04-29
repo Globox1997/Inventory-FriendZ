@@ -17,5 +17,15 @@
             "invo:pilidle4",
             "invo:pilidle5"
         ]
+    },
+    "totemactivating": {
+        "sounds": [
+            "invo:totemactivate"
+        ]
+    },
+    "totemsleep": {
+        "sounds": [
+            "invo:totemsleep"
+        ]
     }
 }

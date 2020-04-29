@@ -3,20 +3,17 @@
   "pattern": [
     "fdf",
     "ded",
-    "fof"
+    "fdf"
   ],
   "key": {
     "d": {
-      "item": "minecraft:diamond"
+      "item": "invo:bluefeather"
     },
     "e": {
       "item": "invo:speedtotem1"
     },
     "f": {
       "item": "minecraft:crying_obsidian"
-    },
-    "o": {
-      "item": "minecraft:diamond_block"
     }
   },
   "result": {
