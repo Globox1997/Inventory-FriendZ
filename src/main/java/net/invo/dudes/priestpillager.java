@@ -3,6 +3,7 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
+import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -24,25 +25,25 @@ public class priestpillager extends Item {
 
   public priestpillager(Settings settings) {
     super(settings);
-    this.addPropertyGetter(new Identifier("phase1"), (stack, world, entity) -> {
+    FabricModelPredicateProviderRegistry.register(new Identifier("phase1"), (stack, world, entity) -> {
       if (lifegen == 1) {
         return 0.2F;
       }
       return 0F;
     });
-    this.addPropertyGetter(new Identifier("phase2"), (stack, world, entity) -> {
+    FabricModelPredicateProviderRegistry.register(new Identifier("phase2"), (stack, world, entity) -> {
       if (lifegen == 2) {
         return 0.4F;
       }
       return 0F;
     });
-    this.addPropertyGetter(new Identifier("phase3"), (stack, world, entity) -> {
+    FabricModelPredicateProviderRegistry.register(new Identifier("phase3"), (stack, world, entity) -> {
       if (lifegen == 3) {
         return 0.8F;
       }
       return 0F;
     });
-    this.addPropertyGetter(new Identifier("phase4"), (stack, world, entity) -> {
+    FabricModelPredicateProviderRegistry.register(new Identifier("phase4"), (stack, world, entity) -> {
       if (lifegen == 4) {
         return 1F;
       }

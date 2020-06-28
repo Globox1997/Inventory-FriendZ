@@ -3,6 +3,7 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
+import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.invo.inits.soundinit;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -38,43 +39,43 @@ public class orepillager extends Item {
 
     // ore found
 
-    this.addPropertyGetter(new Identifier("coalfound"), (stack, world, entity) -> {
+    FabricModelPredicateProviderRegistry.register(new Identifier("coalfound"), (stack, world, entity) -> {
       if (orechoose == 1 && questiontimer != 0) {
         return 0.15F;
       }
       return 0F;
     });
-    this.addPropertyGetter(new Identifier("diafound"), (stack, world, entity) -> {
+    FabricModelPredicateProviderRegistry.register(new Identifier("diafound"), (stack, world, entity) -> {
       if (orechoose == 2 && questiontimer != 0) {
         return 0.25F;
       }
       return 0F;
     });
-    this.addPropertyGetter(new Identifier("ironfound"), (stack, world, entity) -> {
+    FabricModelPredicateProviderRegistry.register(new Identifier("ironfound"), (stack, world, entity) -> {
       if (orechoose == 3 && questiontimer != 0) {
         return 0.35F;
       }
       return 0F;
     });
-    this.addPropertyGetter(new Identifier("redfound"), (stack, world, entity) -> {
+    FabricModelPredicateProviderRegistry.register(new Identifier("redfound"), (stack, world, entity) -> {
       if (orechoose == 4 && questiontimer != 0) {
         return 0.45F;
       }
       return 0F;
     });
-    this.addPropertyGetter(new Identifier("goldfound"), (stack, world, entity) -> {
+    FabricModelPredicateProviderRegistry.register(new Identifier("goldfound"), (stack, world, entity) -> {
       if (orechoose == 5 && questiontimer != 0) {
         return 0.55F;
       }
       return 0F;
     });
-    this.addPropertyGetter(new Identifier("lapisfound"), (stack, world, entity) -> {
+    FabricModelPredicateProviderRegistry.register(new Identifier("lapisfound"), (stack, world, entity) -> {
       if (orechoose == 6 && questiontimer != 0) {
         return 0.65F;
       }
       return 0F;
     });
-    this.addPropertyGetter(new Identifier("emeraldfound"), (stack, world, entity) -> {
+    FabricModelPredicateProviderRegistry.register(new Identifier("emeraldfound"), (stack, world, entity) -> {
       if (orechoose == 7 && questiontimer != 0) {
         return 0.75F;
       }
@@ -83,43 +84,43 @@ public class orepillager extends Item {
 
     // orechoosing
 
-    this.addPropertyGetter(new Identifier("coal"), (stack, world, entity) -> {
+    FabricModelPredicateProviderRegistry.register(new Identifier("coal"), (stack, world, entity) -> {
       if (orechoose == 1 && questiontimer == 0) {
         return 0.1F;
       }
       return 0F;
     });
-    this.addPropertyGetter(new Identifier("dia"), (stack, world, entity) -> {
+    FabricModelPredicateProviderRegistry.register(new Identifier("dia"), (stack, world, entity) -> {
       if (orechoose == 2 && questiontimer == 0) {
         return 0.2F;
       }
       return 0F;
     });
-    this.addPropertyGetter(new Identifier("iron"), (stack, world, entity) -> {
+    FabricModelPredicateProviderRegistry.register(new Identifier("iron"), (stack, world, entity) -> {
       if (orechoose == 3 && questiontimer == 0) {
         return 0.3F;
       }
       return 0F;
     });
-    this.addPropertyGetter(new Identifier("red"), (stack, world, entity) -> {
+    FabricModelPredicateProviderRegistry.register(new Identifier("red"), (stack, world, entity) -> {
       if (orechoose == 4 && questiontimer == 0) {
         return 0.4F;
       }
       return 0F;
     });
-    this.addPropertyGetter(new Identifier("gold"), (stack, world, entity) -> {
+    FabricModelPredicateProviderRegistry.register(new Identifier("gold"), (stack, world, entity) -> {
       if (orechoose == 5 && questiontimer == 0) {
         return 0.5F;
       }
       return 0F;
     });
-    this.addPropertyGetter(new Identifier("lapis"), (stack, world, entity) -> {
+    FabricModelPredicateProviderRegistry.register(new Identifier("lapis"), (stack, world, entity) -> {
       if (orechoose == 6 && questiontimer == 0) {
         return 0.6F;
       }
       return 0F;
     });
-    this.addPropertyGetter(new Identifier("emerald"), (stack, world, entity) -> {
+    FabricModelPredicateProviderRegistry.register(new Identifier("emerald"), (stack, world, entity) -> {
       if (orechoose == 7 && questiontimer == 0) {
         return 0.7F;
       }
@@ -128,7 +129,7 @@ public class orepillager extends Item {
 
     // sleep
 
-    this.addPropertyGetter(new Identifier("sleep"), (stack, world, entity) -> {
+    FabricModelPredicateProviderRegistry.register(new Identifier("sleep"), (stack, world, entity) -> {
       if (sleeptimer < 0) {
         return 0.8F;
       }

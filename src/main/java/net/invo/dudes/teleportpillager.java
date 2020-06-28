@@ -3,6 +3,7 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
+import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.invo.inits.soundinit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -11,6 +12,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
@@ -19,7 +21,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionType;
 
 public class teleportpillager extends Item {
   private double xposition = 0;
@@ -32,13 +33,13 @@ public class teleportpillager extends Item {
   private int spawnpointnotset = 19;
   private int spawnpointset = 19;
   private int endertest = 19;
-  private int dimensionint;
+  // private int dimensionint;
   private int endchilltimer = 19;
 
   public teleportpillager(Settings settings) {
     super(settings);
-    this.addPropertyGetter(new Identifier("sleep"), (stack, world, entity) -> {
-      if (teleportcounter > 0 && teleportcounter < 12000) { // 12000
+    FabricModelPredicateProviderRegistry.register(new Identifier("sleep"), (stack, world, entity) -> {
+      if (teleportcounter > 0 && teleportcounter < 12000) {
         return 1F;
       }
       return 0F;
@@ -58,23 +59,35 @@ public class teleportpillager extends Item {
     ItemStack itemStack = user.getStackInHand(hand);
     ItemStack pearl = new ItemStack(Items.ENDER_PEARL);
     int pearlslot = user.inventory.getSlotWithStack(pearl);
+    CompoundTag tags = itemStack.getTag();
     if (user.isSneaking()) {
       xposition = user.getX();
       yposition = user.getY();
       zposition = user.getZ();
       spawnpointset = 1;
-      if (user.dimension.equals(DimensionType.OVERWORLD)) {
-        dimensionint = 1;
+
+      if (tags == null) {
+        itemStack.setTag(new CompoundTag());
+        tags = itemStack.getTag();
       }
-      if (user.dimension.equals(DimensionType.THE_NETHER)) {
-        dimensionint = 2;
-      }
-      if (user.dimension.equals(DimensionType.THE_END)) {
-        dimensionint = 3;
-      }
+      tags.putDouble("xposition", user.getX());
+      tags.putDouble("yposition", user.getY());
+      tags.putDouble("zposition", user.getZ());
+      tags.putString("dimensionx", user.world.getDimensionRegistryKey().getValue().toString());
+
+      // if (user.dimension.equals(DimensionType.OVERWORLD)) {
+      // dimensionint = 1;
+      // }
+      // if (user.dimension.equals(DimensionType.THE_NETHER)) {
+      // dimensionint = 2;
+      // }
+      // if (user.dimension.equals(DimensionType.THE_END)) {
+      // dimensionint = 3;
+      // }
       return TypedActionResult.success(itemStack);
     } else {
-      if (xposition != 0 && (teleportcounter >= 12000) && user.inventory.contains(pearl) && !world.isClient) {
+      if (xposition != 0 && (teleportcounter >= 12000) && user.inventory.contains(pearl) && !world.isClient
+          && user.world.getDimensionRegistryKey().getValue().toString() != tags.getString("dimensionx")) {
         teleportint = 0;
         teleportcounter = 0;
         user.inventory.removeStack(pearlslot, 1);
@@ -102,7 +115,9 @@ public class teleportpillager extends Item {
   }
 
   public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-    LivingEntity player = (LivingEntity) entity;
+    LivingEntity livingEntity = (LivingEntity) entity;
+    PlayerEntity player = (PlayerEntity) livingEntity;
+    CompoundTag tags = stack.getTag();
     if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
         || slot == 8 && !world.isClient) {
       if (teleportcounter < 12000) { // 12000
@@ -129,52 +144,69 @@ public class teleportpillager extends Item {
       }
 
       if (teleportint == 60 || teleportint == 61) {
-        if (player.dimension.equals(DimensionType.OVERWORLD) && dimensionint == 2) {
-          player.changeDimension(DimensionType.THE_NETHER);
-        }
-        if (player.dimension.equals(DimensionType.OVERWORLD) && dimensionint == 3) {
-          player.changeDimension(DimensionType.THE_END);
-        }
-        if (player.dimension.equals(DimensionType.THE_NETHER) && dimensionint == 1) {
-          player.changeDimension(DimensionType.OVERWORLD);
-        }
-        if (player.dimension.equals(DimensionType.THE_NETHER) && dimensionint == 3) {
-          player.changeDimension(DimensionType.THE_END);
-        }
-        if (player.dimension.equals(DimensionType.THE_END) && dimensionint == 1) {
-          endchilltimer = 0;
-          player.changeDimension(DimensionType.OVERWORLD);
-        }
-        if (player.dimension.equals(DimensionType.THE_END) && dimensionint == 2) {
-          endchilltimer = 0;
-          player.changeDimension(DimensionType.THE_NETHER);
-        }
-        player.teleport(xposition, yposition, zposition);
+        // if (world.getDimension().equals(DimensionType.OVERWORLD) && dimensionint ==
+        // 2) {
+        // player.changeDimension(DimensionType.THE_NETHER);
+        // }
+        // if (world.getDimension().equals(DimensionType.OVERWORLD) && dimensionint ==
+        // 3) {
+        // player.changeDimension(DimensionType.THE_END);
+        // }
+        // if (world.getDimension().equals(DimensionType.THE_NETHER) && dimensionint ==
+        // 1) {
+        // player.changeDimension(DimensionType.OVERWORLD);
+        // }
+        // if (world.getDimension().equals(DimensionType.THE_NETHER) && dimensionint ==
+        // 3) {
+        // player.changeDimension(DimensionType.THE_END);
+        // }
+        // if (world.getDimension().equals(DimensionType.THE_END) && dimensionint == 1)
+        // {
+        // endchilltimer = 0;
+        // player.changeDimension(DimensionType.OVERWORLD);
+        // }
+        // if (world.getDimension().equals(DimensionType.THE_END) && dimensionint == 2)
+        // {
+        // endchilltimer = 0;
+        // player.changeDimension(DimensionType.THE_NETHER);
+        // }
+        // world.getDimension().equals(DimensionOptions.NETHER);
+        // player.teleport(xposition, yposition, zposition);
+
+        // tags.putString("dimensionx",
+        // user.world.getDimensionRegistryKey().getValue().toString());
+        // if(player.world.getDimensionRegistryKey().getValue().toString() !=
+        // tags.getString("dimensionx")){
+        // player.changeDimension(tags.);
+        // }
+
+        this.endchilltimer = 0;
+        player.teleport(tags.getDouble("xposition"), tags.getDouble("yposition"), tags.getDouble("zposition"));
         player.playSound(SoundEvents.ENTITY_ENDERMAN_TELEPORT, 0.8F, 1.0F);
       }
       if (sleeptimer < 18) {
         sleeptimer++;
         if (sleeptimer == 16) {
-          player.sendSystemMessage(new TranslatableText("item.invo.teleportpillagermissing"));
+          player.sendMessage(new TranslatableText("item.invo.teleportpillagermissing"), true);
         }
       }
       if (spawnpointnotset < 18) {
         spawnpointnotset++;
         if (spawnpointnotset == 16) {
-          player.sendSystemMessage(new TranslatableText("item.invo.teleportpillagernotset"));
+          player.sendMessage(new TranslatableText("item.invo.teleportpillagernotset"), true);
         }
       }
       if (spawnpointset < 18) {
         spawnpointset++;
         if (spawnpointset == 16) {
-          player.sendSystemMessage(new TranslatableText("item.invo.teleportpillagersave"));
+          player.sendMessage(new TranslatableText("item.invo.teleportpillagersave"), true);
 
         }
       }
       if (endertest < 18) {
         endertest++;
         if (endertest == 16) {
-          player.sendSystemMessage(new TranslatableText("item.invo.teleportpillagerpearl"));
+          player.sendMessage(new TranslatableText("item.invo.teleportpillagerpearl"), true);
 
         }
       }

@@ -3,6 +3,7 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
+import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.invo.inits.soundinit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -24,7 +25,7 @@ public class pillager5 extends Item {
 
     public pillager5(Settings settings) {
         super(settings);
-        this.addPropertyGetter(new Identifier("sleep"), (stack, world, entity) -> {
+        FabricModelPredicateProviderRegistry.register(new Identifier("sleep"), (stack, world, entity) -> {
             if (count < 0) {
                 return 1F;
             }
