@@ -3,6 +3,8 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import net.invo.config.friendconfig;
 import net.invo.inits.soundinit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -17,8 +19,8 @@ import net.minecraft.text.TranslatableText;
 import net.minecraft.world.World;
 
 public class earthpillager extends Item {
-  public static int itemtimer = 0;
-  public static int effect = 0;
+  public int itemtimer = 0;
+  public int effect = 0;
 
   public earthpillager(Settings settings) {
     super(settings);
@@ -28,23 +30,28 @@ public class earthpillager extends Item {
   @Override
   public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
     tooltip.add(new TranslatableText("item.invo.earthpillager.tooltip"));
+    if (!AutoConfig.getConfigHolder(friendconfig.class).getConfig().earthpillager) {
+      tooltip.add(new TranslatableText("item.invo.deactivated"));
+    }
   }
 
+  @Override
   public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
     LivingEntity player = (LivingEntity) entity;
     PlayerEntity gamer = (PlayerEntity) player;
     ItemStack nugget = new ItemStack(Items.IRON_NUGGET);
     int nuggetslot = gamer.inventory.getSlotWithStack(nugget);
-
-    if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
-        || slot == 8 && !world.isClient) {
-      if (gamer.inventory.contains(nugget)) {
-        itemtimer++;
-        if (itemtimer >= 1200) {
-          itemtimer = 0;
-          gamer.inventory.insertStack(loot());
-          gamer.inventory.removeStack(nuggetslot, 1);
-          gamer.playSound(soundinit.TRADERSOUNDEVENT, 0.5F, 1.0F);
+    if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().earthpillager) {
+      if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
+          || slot == 8 && !world.isClient) {
+        if (gamer.inventory.contains(nugget)) {
+          itemtimer++;
+          if (itemtimer >= 1200) {
+            itemtimer = 0;
+            gamer.inventory.insertStack(loot());
+            gamer.inventory.removeStack(nuggetslot, 1);
+            gamer.playSound(soundinit.TRADERSOUNDEVENT, 0.5F, 1.0F);
+          }
         }
       }
     }
@@ -87,7 +94,13 @@ public class earthpillager extends Item {
 
   }
 
+  @Override
   public void onCraft(ItemStack stack, World world, PlayerEntity player) {
+    if (!AutoConfig.getConfigHolder(friendconfig.class).getConfig().earthpillager) {
+      if (!world.isClient) {
+        stack.decrement(1);
+      }
+    }
     while (effect < 60) {
       Random random = new Random();
       Random random2 = new Random();

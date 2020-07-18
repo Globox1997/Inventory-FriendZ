@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "invo:blueemerald",
+      "invo:blueeye",
+      "invo:bluefeather",
+      "invo:blueingot",
+      "invo:bluemagma",
+      "invo:bluequartz",
+      "invo:blueshard"
+    ]
+  },
+  "criteria": {
+    "got_the_bluediamond": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:diamond"
+          }
+        ]
+      }
+    }
+  }
+}

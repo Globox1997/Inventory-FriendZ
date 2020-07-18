@@ -3,7 +3,8 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
-import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import net.invo.config.friendconfig;
 import net.invo.inits.soundinit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -17,34 +18,25 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 public class speedtotem3 extends Item {
-  public static int count = 0;
-  public static int count2 = 0;
+  public int count = 0;
+  public int count2 = 0;
 
   public speedtotem3(Settings settings) {
     super(settings);
-    FabricModelPredicateProviderRegistry.register(new Identifier("phase"), (stack, world, entity) -> {
-      if (count >= 8400 && count <= 9600) {
-        return 0.5F;
-      }
-      return 0F;
-    });
-    FabricModelPredicateProviderRegistry.register(new Identifier("sleep"), (stack, world, entity) -> {
-      if (count < 0) {
-        return 1F;
-      }
-      return 0F;
-    });
+
   }
 
   @Override
   public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
     tooltip.add(new TranslatableText("item.invo.speedtotem3.tooltip"));
     tooltip.add(new TranslatableText("item.invo.speedtotem3.tooltip2"));
+    if (!AutoConfig.getConfigHolder(friendconfig.class).getConfig().speedtotem) {
+      tooltip.add(new TranslatableText("item.invo.deactivated"));
+    }
   }
 
   @Override
@@ -64,31 +56,32 @@ public class speedtotem3 extends Item {
   public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
     StatusEffectInstance speed = new StatusEffectInstance(StatusEffect.byRawId(1), 8, 0, false, false);
     LivingEntity player = (LivingEntity) entity;
-    if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
-        || slot == 8 && !world.isClient) {
-      if (count != 0) {
-        count++;
-      }
-      if (count >= 9600) {
-        count = -2400;
-        player.playSound(soundinit.TOTEMSLEEPEVENT, 0.1F, 0.8F);
-      }
-      if (count > 0) {
-        player.addStatusEffect(speed);
-      }
+    if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().speedtotem) {
+      if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
+          || slot == 8 && !world.isClient) {
+        if (count != 0) {
+          count++;
+        }
+        if (count >= 9600) {
+          count = -2400;
+          player.playSound(soundinit.TOTEMSLEEPEVENT, 0.1F, 0.8F);
+        }
+        if (count > 0) {
+          player.addStatusEffect(speed);
+        }
 
+      }
+      if (slot != 0 && slot != 1 && slot != 2 && slot != 3 && slot != 4 && slot != 5 && slot != 6 && slot != 7
+          && slot != 8) {
+        if (count < 0) {
+          count++;
+        }
+        if (count > 0) {
+          count = 0;
+        }
+
+      }
     }
-    if (slot != 0 && slot != 1 && slot != 2 && slot != 3 && slot != 4 && slot != 5 && slot != 6 && slot != 7
-        && slot != 8) {
-      if (count < 0) {
-        count++;
-      }
-      if (count > 0) {
-        count = 0;
-      }
-
-    }
-
   }
 
   @Override

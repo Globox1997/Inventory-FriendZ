@@ -1,0 +1,27 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "invo:earthpillager",
+      "invo:endpillager",
+      "invo:foodpillager",
+      "invo:marinepillager",
+      "invo:netherpillager",
+      "invo:orepillager",
+      "invo:priestpillager",
+      "invo:teleportpillager"
+    ]
+  },
+  "criteria": {
+    "got_the_emerald": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:emerald"
+          }
+        ]
+      }
+    }
+  }
+}

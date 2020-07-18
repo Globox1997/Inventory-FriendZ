@@ -3,7 +3,8 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
-import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import net.invo.config.friendconfig;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -14,41 +15,16 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 public class priestpillager extends Item {
   private int itemtimer = 0;
   private int effect = 0;
-  private float lifegen = 0;
+  public float lifegen = 0;
 
   public priestpillager(Settings settings) {
     super(settings);
-    FabricModelPredicateProviderRegistry.register(new Identifier("phase1"), (stack, world, entity) -> {
-      if (lifegen == 1) {
-        return 0.2F;
-      }
-      return 0F;
-    });
-    FabricModelPredicateProviderRegistry.register(new Identifier("phase2"), (stack, world, entity) -> {
-      if (lifegen == 2) {
-        return 0.4F;
-      }
-      return 0F;
-    });
-    FabricModelPredicateProviderRegistry.register(new Identifier("phase3"), (stack, world, entity) -> {
-      if (lifegen == 3) {
-        return 0.8F;
-      }
-      return 0F;
-    });
-    FabricModelPredicateProviderRegistry.register(new Identifier("phase4"), (stack, world, entity) -> {
-      if (lifegen == 4) {
-        return 1F;
-      }
-      return 0F;
-    });
 
   }
 
@@ -57,6 +33,9 @@ public class priestpillager extends Item {
     tooltip.add(new TranslatableText("item.invo.priestpillager.tooltip"));
     tooltip.add(new TranslatableText("item.invo.priestpillager.tooltip2"));
     tooltip.add(new TranslatableText("item.invo.priestpillager.tooltip3"));
+    if (!AutoConfig.getConfigHolder(friendconfig.class).getConfig().priestpillager) {
+      tooltip.add(new TranslatableText("item.invo.deactivated"));
+    }
   }
 
   @Override
@@ -75,18 +54,21 @@ public class priestpillager extends Item {
   }
 
   public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-    if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
-        || slot == 8) {
-      if (lifegen < 4) {
-        itemtimer++;
-        if (itemtimer >= 800) {
-          lifegen = lifegen + 1F;
-          itemtimer = 0;
+    if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().priestpillager) {
+      if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
+          || slot == 8) {
+        if (lifegen < 4) {
+          itemtimer++;
+          if (itemtimer >= 800) {
+            lifegen = lifegen + 1F;
+            itemtimer = 0;
+          }
         }
       }
     }
   }
 
+  @Override
   public void onCraft(ItemStack stack, World world, PlayerEntity player) {
     while (effect < 60) {
       Random random = new Random();

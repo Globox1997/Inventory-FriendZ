@@ -3,6 +3,8 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import net.invo.config.friendconfig;
 import net.invo.inits.soundinit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -17,8 +19,8 @@ import net.minecraft.text.TranslatableText;
 import net.minecraft.world.World;
 
 public class netherpillager extends Item {
-  public static int itemtimer = 0;
-  public static int effect = 0;
+  public int itemtimer = 0;
+  public int effect = 0;
 
   public netherpillager(Settings settings) {
     super(settings);
@@ -28,23 +30,28 @@ public class netherpillager extends Item {
   @Override
   public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
     tooltip.add(new TranslatableText("item.invo.netherpillager.tooltip"));
+    if (!AutoConfig.getConfigHolder(friendconfig.class).getConfig().netherpillager) {
+      tooltip.add(new TranslatableText("item.invo.deactivated"));
+    }
   }
 
+  @Override
   public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
     LivingEntity player = (LivingEntity) entity;
     PlayerEntity gamer = (PlayerEntity) player;
     ItemStack nugget = new ItemStack(Items.GOLD_NUGGET);
     int nuggetslot = gamer.inventory.getSlotWithStack(nugget);
-
-    if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
-        || slot == 8 && !world.isClient) {
-      if (gamer.inventory.contains(nugget)) {
-        itemtimer++;
-        if (itemtimer >= 1350) {
-          itemtimer = 0;
-          gamer.inventory.insertStack(loot());
-          gamer.inventory.removeStack(nuggetslot, 1);
-          gamer.playSound(soundinit.TRADERSOUNDEVENT, 0.5F, 1.0F);
+    if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().netherpillager) {
+      if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
+          || slot == 8 && !world.isClient) {
+        if (gamer.inventory.contains(nugget)) {
+          itemtimer++;
+          if (itemtimer >= 1350) {
+            itemtimer = 0;
+            gamer.inventory.insertStack(loot());
+            gamer.inventory.removeStack(nuggetslot, 1);
+            gamer.playSound(soundinit.TRADERSOUNDEVENT, 0.5F, 1.0F);
+          }
         }
       }
     }
@@ -77,6 +84,7 @@ public class netherpillager extends Item {
 
   }
 
+  @Override
   public void onCraft(ItemStack stack, World world, PlayerEntity player) {
     while (effect < 60) {
       Random random = new Random();

@@ -89,8 +89,8 @@
     "text.autoconfig.invo.option.nightvisiontotem": "Nightvision Totem",
     "text.autoconfig.invo.option.resistancetotem": "Resistance Totem",
     "text.autoconfig.invo.option.speedtotem": "Speed Totem",
-    "text.autoconfig.invo.option.strenghtotem": "Strength Totem",
-    "text.autoconfig.invo.option.waterbreathingtotem": "Waterbreathing Totem",
+    "text.autoconfig.invo.option.strengthtotem": "Strength Totem",
+    "text.autoconfig.invo.option.waterbreathtotem": "Waterbreathing Totem",
     "text.autoconfig.invo.option.earthpillager": "Earth Pillager",
     "text.autoconfig.invo.option.endpillager": "End Pillager",
     "text.autoconfig.invo.option.foodpillager": "Food Pillager",
@@ -116,6 +116,7 @@
     "item.invo.teleportpillagernotset": "Missing Teleport Point",
     "item.invo.teleportpillagersave": "Teleport Point Set",
     "item.invo.teleportpillagerpearl": "Missing Ender Pearl",
+    "item.invo.teleportpillagerfalsedim": "Wrong Dimension",
     "item.invo.marinepillager": "§5Pillager of the Sea",
     "item.invo.marinepillager.tooltip": "Collect Sea Items",
     "item.invo.earthpillager": "§5Dirty Pillager",
@@ -134,5 +135,6 @@
     "item.invo.orepillager.tooltip": "§9Searches nearby Ores (5:00)",
     "item.invo.orepillager.tooltip2": "§7Hold Ore in left hand",
     "item.invo.orepillager.tooltip3": "§7Shift + Right Click",
-    "item.invo.orepillager.tooltip4": "§cSleep (1:00)"
+    "item.invo.orepillager.tooltip4": "§cSleep (1:00)",
+    "item.invo.deactivated": "§4Deactivated"
 }

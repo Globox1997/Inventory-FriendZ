@@ -3,7 +3,8 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
-import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import net.invo.config.friendconfig;
 import net.invo.inits.soundinit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -16,56 +17,56 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
-import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 public class pillager3 extends Item {
-    public static int count = 0;
-    public static int count2 = 0;
+    public int count = 0;
+    public int count2 = 0;
 
     public pillager3(Settings settings) {
         super(settings);
-        FabricModelPredicateProviderRegistry.register(new Identifier("sleep"), (stack, world, entity) -> {
-            if (count < 0) {
-                return 1F;
-            }
-            return 0F;
-        });
+
     }
 
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
         tooltip.add(new TranslatableText("item.invo.pillager3.tooltip"));
+        if (!AutoConfig.getConfigHolder(friendconfig.class).getConfig().fallingpillager) {
+            tooltip.add(new TranslatableText("item.invo.deactivated"));
+        }
     }
 
+    @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         StatusEffectInstance falling = new StatusEffectInstance(StatusEffect.byRawId(28), 0, 0, false, false);
         LivingEntity player = (LivingEntity) entity;
-        if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
-                || slot == 8 && !world.isClient) {
-            count++;
-            if (count >= 9600) {
-                count = -2400;
-                player.playSound(soundinit.SLEEPEVENT, 0.5F, 1F);
-            }
-            if (count >= 0) {
-                player.addStatusEffect(falling);
-            }
-
-        }
-        if (slot != 0 && slot != 1 && slot != 2 && slot != 3 && slot != 4 && slot != 5 && slot != 6 && slot != 7
-                && slot != 8) {
-            if (count < 0) {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().fallingpillager) {
+            if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
+                    || slot == 8 && !world.isClient) {
                 count++;
-            }
-            if (count > 0) {
-                count = 0;
-            }
+                if (count >= 9600) {
+                    count = -2400;
+                    player.playSound(soundinit.SLEEPEVENT, 0.5F, 1F);
+                }
+                if (count >= 0) {
+                    player.addStatusEffect(falling);
+                }
 
+            }
+            if (slot != 0 && slot != 1 && slot != 2 && slot != 3 && slot != 4 && slot != 5 && slot != 6 && slot != 7
+                    && slot != 8) {
+                if (count < 0) {
+                    count++;
+                }
+                if (count > 0) {
+                    count = 0;
+                }
+
+            }
         }
-
     }
 
+    @Override
     public void onCraft(ItemStack stack, World world, PlayerEntity player) {
         while (count2 < 60) {
             Random random = new Random();
@@ -85,6 +86,14 @@ public class pillager3 extends Item {
             count2 = 0;
         }
 
+    }
+
+    @Override
+    public boolean hasRecipeRemainder() {
+        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().fallingpillager) {
+            return true;
+        } else
+            return false;
     }
 
 }

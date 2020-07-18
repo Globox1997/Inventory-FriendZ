@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "invo:fireresistancetotem3",
+      "invo:hastetotem3",
+      "invo:nightvisiontotem3",
+      "invo:resistancetotem3",
+      "invo:speedtotem3",
+      "invo:strengthtotem3",
+      "invo:waterbreathingtotem3"
+    ]
+  },
+  "criteria": {
+    "got_the_netherite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:netherite_ingot"
+          }
+        ]
+      }
+    }
+  }
+}

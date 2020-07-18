@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "invo:fireresistancetotem1",
+      "invo:hastetotem1",
+      "invo:nightvisiontotem1",
+      "invo:resistancetotem1",
+      "invo:speedtotem1",
+      "invo:strengthtotem1",
+      "invo:waterbreathingtotem1",
+      "invo:fireresistancetotem2",
+      "invo:hastetotem2",
+      "invo:nightvisiontotem2",
+      "invo:resistancetotem2",
+      "invo:speedtotem2",
+      "invo:strengthtotem2",
+      "invo:waterbreathingtotem2"
+    ]
+  },
+  "criteria": {
+    "got_the_star": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:nether_star"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -3,7 +3,8 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
-import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import net.invo.config.friendconfig;
 import net.invo.inits.soundinit;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -21,120 +22,20 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class orepillager extends Item {
-  private int orechoose = 0;
-  private int sleeptimer = 0;
-  private int questiontimer = 0;
+  public int orechoose = 0;
+  public int sleeptimer = 0;
+  public int questiontimer = 0;
   private int orechoosetimer = 0;
   private int craftparticle = 0;
   private int sleeptime = 12000;
 
   public orepillager(Settings settings) {
     super(settings);
-
-    // ore found
-
-    FabricModelPredicateProviderRegistry.register(new Identifier("coalfound"), (stack, world, entity) -> {
-      if (orechoose == 1 && questiontimer != 0) {
-        return 0.15F;
-      }
-      return 0F;
-    });
-    FabricModelPredicateProviderRegistry.register(new Identifier("diafound"), (stack, world, entity) -> {
-      if (orechoose == 2 && questiontimer != 0) {
-        return 0.25F;
-      }
-      return 0F;
-    });
-    FabricModelPredicateProviderRegistry.register(new Identifier("ironfound"), (stack, world, entity) -> {
-      if (orechoose == 3 && questiontimer != 0) {
-        return 0.35F;
-      }
-      return 0F;
-    });
-    FabricModelPredicateProviderRegistry.register(new Identifier("redfound"), (stack, world, entity) -> {
-      if (orechoose == 4 && questiontimer != 0) {
-        return 0.45F;
-      }
-      return 0F;
-    });
-    FabricModelPredicateProviderRegistry.register(new Identifier("goldfound"), (stack, world, entity) -> {
-      if (orechoose == 5 && questiontimer != 0) {
-        return 0.55F;
-      }
-      return 0F;
-    });
-    FabricModelPredicateProviderRegistry.register(new Identifier("lapisfound"), (stack, world, entity) -> {
-      if (orechoose == 6 && questiontimer != 0) {
-        return 0.65F;
-      }
-      return 0F;
-    });
-    FabricModelPredicateProviderRegistry.register(new Identifier("emeraldfound"), (stack, world, entity) -> {
-      if (orechoose == 7 && questiontimer != 0) {
-        return 0.75F;
-      }
-      return 0F;
-    });
-
-    // orechoosing
-
-    FabricModelPredicateProviderRegistry.register(new Identifier("coal"), (stack, world, entity) -> {
-      if (orechoose == 1 && questiontimer == 0) {
-        return 0.1F;
-      }
-      return 0F;
-    });
-    FabricModelPredicateProviderRegistry.register(new Identifier("dia"), (stack, world, entity) -> {
-      if (orechoose == 2 && questiontimer == 0) {
-        return 0.2F;
-      }
-      return 0F;
-    });
-    FabricModelPredicateProviderRegistry.register(new Identifier("iron"), (stack, world, entity) -> {
-      if (orechoose == 3 && questiontimer == 0) {
-        return 0.3F;
-      }
-      return 0F;
-    });
-    FabricModelPredicateProviderRegistry.register(new Identifier("red"), (stack, world, entity) -> {
-      if (orechoose == 4 && questiontimer == 0) {
-        return 0.4F;
-      }
-      return 0F;
-    });
-    FabricModelPredicateProviderRegistry.register(new Identifier("gold"), (stack, world, entity) -> {
-      if (orechoose == 5 && questiontimer == 0) {
-        return 0.5F;
-      }
-      return 0F;
-    });
-    FabricModelPredicateProviderRegistry.register(new Identifier("lapis"), (stack, world, entity) -> {
-      if (orechoose == 6 && questiontimer == 0) {
-        return 0.6F;
-      }
-      return 0F;
-    });
-    FabricModelPredicateProviderRegistry.register(new Identifier("emerald"), (stack, world, entity) -> {
-      if (orechoose == 7 && questiontimer == 0) {
-        return 0.7F;
-      }
-      return 0F;
-    });
-
-    // sleep
-
-    FabricModelPredicateProviderRegistry.register(new Identifier("sleep"), (stack, world, entity) -> {
-      if (sleeptimer < 0) {
-        return 0.8F;
-      }
-      return 0F;
-    });
 
   }
 
@@ -144,6 +45,9 @@ public class orepillager extends Item {
     tooltip.add(new TranslatableText("item.invo.orepillager.tooltip2"));
     tooltip.add(new TranslatableText("item.invo.orepillager.tooltip3"));
     tooltip.add(new TranslatableText("item.invo.orepillager.tooltip4"));
+    if (!AutoConfig.getConfigHolder(friendconfig.class).getConfig().orepillager) {
+      tooltip.add(new TranslatableText("item.invo.deactivated"));
+    }
   }
 
   @Override
@@ -223,94 +127,94 @@ public class orepillager extends Item {
     LivingEntity player = (LivingEntity) entity;
     PlayerEntity gamer = (PlayerEntity) player;
     BlockPos playerpos = new BlockPos(gamer.getBlockPos());
+    if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().orepillager) {
+      if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
+          || slot == 8 && !world.isClient) {
+        if (orechoose != 0) {
+          sleeptimer++;
+          if (sleeptimer < sleeptime) { // 0 < 1200
+            // first layer
+            BlockPos pos700 = new BlockPos(playerpos.west(3));
+            BlockPos pos701 = new BlockPos(playerpos.east(3));
+            BlockPos pos702 = new BlockPos(playerpos.north(3));
+            BlockPos pos703 = new BlockPos(playerpos.south(3));
+            // second layer
+            BlockPos pos704 = new BlockPos(playerpos.west(3).up());
+            BlockPos pos705 = new BlockPos(playerpos.east(3).up());
+            BlockPos pos706 = new BlockPos(playerpos.north(3).up());
+            BlockPos pos707 = new BlockPos(playerpos.south(3).up());
+            // third layer
+            BlockPos pos708 = new BlockPos(playerpos.west(2).up(2));
+            BlockPos pos709 = new BlockPos(playerpos.east(2).up(2));
+            BlockPos pos710 = new BlockPos(playerpos.north(2).up(2));
+            BlockPos pos711 = new BlockPos(playerpos.south(2).up(2));
+            // fourth layer
+            BlockPos pos712 = new BlockPos(playerpos.west().up(3));
+            BlockPos pos713 = new BlockPos(playerpos.east().up(3));
+            BlockPos pos714 = new BlockPos(playerpos.north().up(3));
+            BlockPos pos715 = new BlockPos(playerpos.south().up(3));
+            // fifth layer
+            BlockPos pos716 = new BlockPos(playerpos.west(2).down());
+            BlockPos pos717 = new BlockPos(playerpos.east(2).down());
+            BlockPos pos718 = new BlockPos(playerpos.north(2).down());
+            BlockPos pos719 = new BlockPos(playerpos.south(2).down());
+            // sixth layer
+            BlockPos pos720 = new BlockPos(playerpos.west().down(2));
+            BlockPos pos721 = new BlockPos(playerpos.east().down(2));
+            BlockPos pos722 = new BlockPos(playerpos.north().down(2));
+            BlockPos pos723 = new BlockPos(playerpos.south().down(2));
 
-    if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
-        || slot == 8 && !world.isClient) {
-      if (orechoose != 0) {
-        sleeptimer++;
-        if (sleeptimer < sleeptime) { // 0 < 1200
-          // first layer
-          BlockPos pos700 = new BlockPos(playerpos.west(3));
-          BlockPos pos701 = new BlockPos(playerpos.east(3));
-          BlockPos pos702 = new BlockPos(playerpos.north(3));
-          BlockPos pos703 = new BlockPos(playerpos.south(3));
-          // second layer
-          BlockPos pos704 = new BlockPos(playerpos.west(3).up());
-          BlockPos pos705 = new BlockPos(playerpos.east(3).up());
-          BlockPos pos706 = new BlockPos(playerpos.north(3).up());
-          BlockPos pos707 = new BlockPos(playerpos.south(3).up());
-          // third layer
-          BlockPos pos708 = new BlockPos(playerpos.west(2).up(2));
-          BlockPos pos709 = new BlockPos(playerpos.east(2).up(2));
-          BlockPos pos710 = new BlockPos(playerpos.north(2).up(2));
-          BlockPos pos711 = new BlockPos(playerpos.south(2).up(2));
-          // fourth layer
-          BlockPos pos712 = new BlockPos(playerpos.west().up(3));
-          BlockPos pos713 = new BlockPos(playerpos.east().up(3));
-          BlockPos pos714 = new BlockPos(playerpos.north().up(3));
-          BlockPos pos715 = new BlockPos(playerpos.south().up(3));
-          // fifth layer
-          BlockPos pos716 = new BlockPos(playerpos.west(2).down());
-          BlockPos pos717 = new BlockPos(playerpos.east(2).down());
-          BlockPos pos718 = new BlockPos(playerpos.north(2).down());
-          BlockPos pos719 = new BlockPos(playerpos.south(2).down());
-          // sixth layer
-          BlockPos pos720 = new BlockPos(playerpos.west().down(2));
-          BlockPos pos721 = new BlockPos(playerpos.east().down(2));
-          BlockPos pos722 = new BlockPos(playerpos.north().down(2));
-          BlockPos pos723 = new BlockPos(playerpos.south().down(2));
-
-          if (world.getBlockState(pos700).getBlock().equals(orefinder())
-              || world.getBlockState(pos701).getBlock().equals(orefinder())
-              || world.getBlockState(pos702).getBlock().equals(orefinder())
-              || world.getBlockState(pos703).getBlock().equals(orefinder())
-              || world.getBlockState(pos704).getBlock().equals(orefinder())
-              || world.getBlockState(pos705).getBlock().equals(orefinder())
-              || world.getBlockState(pos706).getBlock().equals(orefinder())
-              || world.getBlockState(pos707).getBlock().equals(orefinder())
-              || world.getBlockState(pos708).getBlock().equals(orefinder())
-              || world.getBlockState(pos709).getBlock().equals(orefinder())
-              || world.getBlockState(pos710).getBlock().equals(orefinder())
-              || world.getBlockState(pos711).getBlock().equals(orefinder())
-              || world.getBlockState(pos712).getBlock().equals(orefinder())
-              || world.getBlockState(pos713).getBlock().equals(orefinder())
-              || world.getBlockState(pos714).getBlock().equals(orefinder())
-              || world.getBlockState(pos715).getBlock().equals(orefinder())
-              || world.getBlockState(pos716).getBlock().equals(orefinder())
-              || world.getBlockState(pos717).getBlock().equals(orefinder())
-              || world.getBlockState(pos718).getBlock().equals(orefinder())
-              || world.getBlockState(pos719).getBlock().equals(orefinder())
-              || world.getBlockState(pos720).getBlock().equals(orefinder())
-              || world.getBlockState(pos721).getBlock().equals(orefinder())
-              || world.getBlockState(pos722).getBlock().equals(orefinder())
-              || world.getBlockState(pos723).getBlock().equals(orefinder())) {
-            questiontimer++;
+            if (world.getBlockState(pos700).getBlock().equals(orefinder())
+                || world.getBlockState(pos701).getBlock().equals(orefinder())
+                || world.getBlockState(pos702).getBlock().equals(orefinder())
+                || world.getBlockState(pos703).getBlock().equals(orefinder())
+                || world.getBlockState(pos704).getBlock().equals(orefinder())
+                || world.getBlockState(pos705).getBlock().equals(orefinder())
+                || world.getBlockState(pos706).getBlock().equals(orefinder())
+                || world.getBlockState(pos707).getBlock().equals(orefinder())
+                || world.getBlockState(pos708).getBlock().equals(orefinder())
+                || world.getBlockState(pos709).getBlock().equals(orefinder())
+                || world.getBlockState(pos710).getBlock().equals(orefinder())
+                || world.getBlockState(pos711).getBlock().equals(orefinder())
+                || world.getBlockState(pos712).getBlock().equals(orefinder())
+                || world.getBlockState(pos713).getBlock().equals(orefinder())
+                || world.getBlockState(pos714).getBlock().equals(orefinder())
+                || world.getBlockState(pos715).getBlock().equals(orefinder())
+                || world.getBlockState(pos716).getBlock().equals(orefinder())
+                || world.getBlockState(pos717).getBlock().equals(orefinder())
+                || world.getBlockState(pos718).getBlock().equals(orefinder())
+                || world.getBlockState(pos719).getBlock().equals(orefinder())
+                || world.getBlockState(pos720).getBlock().equals(orefinder())
+                || world.getBlockState(pos721).getBlock().equals(orefinder())
+                || world.getBlockState(pos722).getBlock().equals(orefinder())
+                || world.getBlockState(pos723).getBlock().equals(orefinder())) {
+              questiontimer++;
+            }
           }
         }
-      }
-      if (sleeptimer >= sleeptime) { // 0 >= 1200
-        player.playSound(soundinit.SLEEPEVENT, 0.7F, 1F);
-        sleeptimer = -2400;
-        orechoose = 0;
-      }
-      if (sleeptimer < 0) {
-        sleeptimer++;
-      }
-      if (questiontimer == 5 || questiontimer == 6) {
-        gamer.playSound(SoundEvents.ENTITY_VILLAGER_TRADE, SoundCategory.NEUTRAL, 1.0F, 1.6F);
-      }
-      if (questiontimer > 0) {
-        questiontimer++;
-      }
-      if (questiontimer >= 120) {
-        questiontimer = 0;
-      }
-      if (orechoosetimer > 0) {
-        orechoosetimer--;
-      }
+        if (sleeptimer >= sleeptime) { // 0 >= 1200
+          player.playSound(soundinit.SLEEPEVENT, 0.7F, 1F);
+          sleeptimer = -2400;
+          orechoose = 0;
+        }
+        if (sleeptimer < 0) {
+          sleeptimer++;
+        }
+        if (questiontimer == 5 || questiontimer == 6) {
+          gamer.playSound(SoundEvents.ENTITY_VILLAGER_TRADE, SoundCategory.NEUTRAL, 1.0F, 1.6F);
+        }
+        if (questiontimer > 0) {
+          questiontimer++;
+        }
+        if (questiontimer >= 120) {
+          questiontimer = 0;
+        }
+        if (orechoosetimer > 0) {
+          orechoosetimer--;
+        }
 
+      }
     }
-
   }
 
   public Block orefinder() {

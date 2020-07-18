@@ -11,83 +11,22 @@ public class itemgroupinit {
 
   public static final ItemGroup invo_GROUP = FabricItemGroupBuilder.create(new Identifier("invo", "friends"))
       .icon(() -> new ItemStack(iteminit.MARINEPILLAGER)).appendItems(stacks -> {
-        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().earthpillager) {
-          stacks.add(new ItemStack(iteminit.EARTHPILLAGER));
-        } else {
-          stacks.add(ItemStack.EMPTY);
-        }
-        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().endpillager) {
-          stacks.add(new ItemStack(iteminit.ENDPILLAGER));
-        } else {
-          stacks.add(ItemStack.EMPTY);
-        }
-        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().foodpillager) {
-          stacks.add(new ItemStack(iteminit.FOODPILLAGER));
-        } else {
-          stacks.add(ItemStack.EMPTY);
-        }
-        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().marinepillager) {
-          stacks.add(new ItemStack(iteminit.MARINEPILLAGER));
-        } else {
-          stacks.add(ItemStack.EMPTY);
-        }
-        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().netherpillager) {
-          stacks.add(new ItemStack(iteminit.NETHERPILLAGER));
-        } else {
-          stacks.add(ItemStack.EMPTY);
-        }
-        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().priestpillager) {
-          stacks.add(new ItemStack(iteminit.PRIESTPILLAGER));
-        } else {
-          stacks.add(ItemStack.EMPTY);
-        }
-        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().teleportpillager) {
-          stacks.add(new ItemStack(iteminit.TELEPORTPILLAGER));
-        } else {
-          stacks.add(ItemStack.EMPTY);
-        }
-        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().orepillager) {
-          stacks.add(new ItemStack(iteminit.OREPILLAGER));
-        } else {
-          stacks.add(ItemStack.EMPTY);
-        }
+        stacks.add(new ItemStack(iteminit.EARTHPILLAGER));
+        stacks.add(new ItemStack(iteminit.ENDPILLAGER));
+        stacks.add(new ItemStack(iteminit.FOODPILLAGER));
+        stacks.add(new ItemStack(iteminit.MARINEPILLAGER));
+        stacks.add(new ItemStack(iteminit.NETHERPILLAGER));
+        stacks.add(new ItemStack(iteminit.PRIESTPILLAGER));
+        stacks.add(new ItemStack(iteminit.TELEPORTPILLAGER));
+        stacks.add(new ItemStack(iteminit.OREPILLAGER));
         stacks.add(ItemStack.EMPTY);
-
-        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().fireresistancetotem) {
-          stacks.add(new ItemStack(iteminit.FIRERESISTANCETOTEM1));
-        } else {
-          stacks.add(ItemStack.EMPTY);
-        }
-        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().hastetotem) {
-          stacks.add(new ItemStack(iteminit.HASTETOTEM1));
-        } else {
-          stacks.add(ItemStack.EMPTY);
-        }
-        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().nightvisiontotem) {
-          stacks.add(new ItemStack(iteminit.NIGHTVISIONTOTEM1));
-        } else {
-          stacks.add(ItemStack.EMPTY);
-        }
-        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().resistancetotem) {
-          stacks.add(new ItemStack(iteminit.RESISTANCETOTEM1));
-        } else {
-          stacks.add(ItemStack.EMPTY);
-        }
-        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().speedtotem) {
-          stacks.add(new ItemStack(iteminit.SPEEDTOTEM1));
-        } else {
-          stacks.add(ItemStack.EMPTY);
-        }
-        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().strengthtotem) {
-          stacks.add(new ItemStack(iteminit.STRENGTHTOTEM1));
-        } else {
-          stacks.add(ItemStack.EMPTY);
-        }
-        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().waterbreathtotem) {
-          stacks.add(new ItemStack(iteminit.WATERBREATHINGTOTEM1));
-        } else {
-          stacks.add(ItemStack.EMPTY);
-        }
+        stacks.add(new ItemStack(iteminit.FIRERESISTANCETOTEM1));
+        stacks.add(new ItemStack(iteminit.HASTETOTEM1));
+        stacks.add(new ItemStack(iteminit.NIGHTVISIONTOTEM1));
+        stacks.add(new ItemStack(iteminit.RESISTANCETOTEM1));
+        stacks.add(new ItemStack(iteminit.SPEEDTOTEM1));
+        stacks.add(new ItemStack(iteminit.STRENGTHTOTEM1));
+        stacks.add(new ItemStack(iteminit.WATERBREATHINGTOTEM1));
         stacks.add(ItemStack.EMPTY);
         stacks.add(ItemStack.EMPTY);
         stacks.add(new ItemStack(iteminit.FIRERESISTANCETOTEM2));

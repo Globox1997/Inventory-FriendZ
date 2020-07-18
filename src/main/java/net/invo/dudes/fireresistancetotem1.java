@@ -3,7 +3,8 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
-import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import net.invo.config.friendconfig;
 import net.invo.inits.soundinit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -17,34 +18,24 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 public class fireresistancetotem1 extends Item {
-  public static int count = 0;
-  public static int count2 = 0;
+  public int count = 0;
+  public int count2 = 0;
 
   public fireresistancetotem1(Settings settings) {
     super(settings);
-    FabricModelPredicateProviderRegistry.register(new Identifier("phase"), (stack, world, entity) -> {
-      if (count >= 600 && count <= 1200) {
-        return 0.5F;
-      }
-      return 0F;
-    });
-    FabricModelPredicateProviderRegistry.register(new Identifier("sleep"), (stack, world, entity) -> {
-      if (count < 0) {
-        return 1F;
-      }
-      return 0F;
-    });
   }
 
   @Override
   public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
     tooltip.add(new TranslatableText("item.invo.fireresistancetotem1.tooltip"));
     tooltip.add(new TranslatableText("item.invo.fireresistancetotem1.tooltip2"));
+    if (!AutoConfig.getConfigHolder(friendconfig.class).getConfig().fireresistancetotem) {
+      tooltip.add(new TranslatableText("item.invo.deactivated"));
+    }
   }
 
   @Override
@@ -65,37 +56,43 @@ public class fireresistancetotem1 extends Item {
     StatusEffectInstance fire = new StatusEffectInstance(StatusEffect.byRawId(12), 8, 0, false, false);
     StatusEffectInstance weak = new StatusEffectInstance(StatusEffect.byRawId(18), 8, 0, false, false);
     LivingEntity player = (LivingEntity) entity;
-    if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
-        || slot == 8 && !world.isClient) {
-      if (count != 0) {
-        count++;
-      }
+    if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().fireresistancetotem) {
+      if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
+          || slot == 8 && !world.isClient) {
+        if (count != 0) {
+          count++;
+        }
 
-      if (count >= 1200) {
-        count = -7200;
-        player.playSound(soundinit.TOTEMSLEEPEVENT, 0.1F, 0.8F);
-      }
-      if (count > 0) {
-        player.addStatusEffect(fire);
-        player.addStatusEffect(weak);
-      }
+        if (count >= 1200) {
+          count = -7200;
+          player.playSound(soundinit.TOTEMSLEEPEVENT, 0.1F, 0.8F);
+        }
+        if (count > 0) {
+          player.addStatusEffect(fire);
+          player.addStatusEffect(weak);
+        }
 
+      }
+      if (slot != 0 && slot != 1 && slot != 2 && slot != 3 && slot != 4 && slot != 5 && slot != 6 && slot != 7
+          && slot != 8) {
+        if (count < 0) {
+          count++;
+        }
+        if (count > 0) {
+          count = 0;
+        }
+
+      }
     }
-    if (slot != 0 && slot != 1 && slot != 2 && slot != 3 && slot != 4 && slot != 5 && slot != 6 && slot != 7
-        && slot != 8) {
-      if (count < 0) {
-        count++;
-      }
-      if (count > 0) {
-        count = 0;
-      }
-
-    }
-
   }
 
   @Override
   public void onCraft(ItemStack stack, World world, PlayerEntity player) {
+    if (!AutoConfig.getConfigHolder(friendconfig.class).getConfig().fireresistancetotem) {
+      if (!world.isClient) {
+        stack.decrement(1);
+      }
+    }
     while (count2 < 60) {
       Random random = new Random();
       Random random2 = new Random();

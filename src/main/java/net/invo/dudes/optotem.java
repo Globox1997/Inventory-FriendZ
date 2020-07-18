@@ -2,6 +2,8 @@ package net.invo.dudes;
 
 import java.util.List;
 
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import net.invo.config.friendconfig;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -20,25 +22,35 @@ public class optotem extends Item {
   @Override
   public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
     tooltip.add(new TranslatableText("item.invo.optotem.tooltip"));
+    if (!AutoConfig.getConfigHolder(friendconfig.class).getConfig().optotem) {
+      tooltip.add(new TranslatableText("item.invo.deactivated"));
+    }
   }
 
   @Override
   public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
     LivingEntity player = (LivingEntity) entity;
     PlayerEntity gamer = (PlayerEntity) player;
-    if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
-        || slot == 8 && !world.isClient) {
-
-      gamer.abilities.allowFlying = true;
+    if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().optotem) {
+      if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
+          || slot == 8 && !world.isClient) {
+        gamer.abilities.allowFlying = true;
+      } else
+        gamer.abilities.allowFlying = false;
     }
-
-    else
-      gamer.abilities.allowFlying = false;
   }
 
   @Override
   public boolean hasGlint(ItemStack stack) {
     return true;
+  }
+
+  @Override
+  public boolean hasRecipeRemainder() {
+    if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().optotem) {
+      return true;
+    } else
+      return false;
   }
 
 }

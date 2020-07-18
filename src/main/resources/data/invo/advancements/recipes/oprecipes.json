@@ -1,0 +1,17 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "invo:optotem",
+      "ivno:pillager1",
+      "ivno:pillager3",
+      "ivno:pillager4",
+      "ivno:pillager5"
+    ]
+  },
+  "criteria": {
+    "onlygmisallowed": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}
