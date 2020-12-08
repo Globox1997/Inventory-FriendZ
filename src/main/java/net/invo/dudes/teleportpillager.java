@@ -3,8 +3,7 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
-import net.invo.config.friendconfig;
+import net.invo.inits.configinit;
 import net.invo.inits.soundinit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -44,7 +43,7 @@ public class teleportpillager extends Item {
     tooltip.add(new TranslatableText("item.invo.teleportpillager.tooltip2"));
     tooltip.add(new TranslatableText("item.invo.teleportpillager.tooltip3"));
     tooltip.add(new TranslatableText("item.invo.teleportpillager.tooltip4"));
-    if (!AutoConfig.getConfigHolder(friendconfig.class).getConfig().teleportpillager) {
+    if (!configinit.CONFIG.teleportpillager) {
       tooltip.add(new TranslatableText("item.invo.deactivated"));
     }
   }
@@ -63,11 +62,11 @@ public class teleportpillager extends Item {
       tags.putDouble("xposition", user.getX());
       tags.putDouble("yposition", user.getY());
       tags.putDouble("zposition", user.getZ());
-      tags.putString("dimpos", user.world.getDimensionRegistryKey().getValue().toString());
+      tags.putString("dimpos", user.world.getDimension().getSuffix());// getDimensionRegistryKey().getValue().toString());
       return TypedActionResult.success(itemStack);
     } else {
-      if (itemStack.hasTag() && teleportcounter >= 12000 && user.inventory.contains(pearl) && user.world
-          .getDimensionRegistryKey().getValue().toString().equals(itemStack.getTag().getString("dimpos"))) {
+      if (itemStack.hasTag() && teleportcounter >= 12000 && user.inventory.contains(pearl)
+          && user.world.getDimension().getSuffix().equals(itemStack.getTag().getString("dimpos"))) {
         teleportint = 0;
         teleportcounter = 0;
         if (!world.isClient) {
@@ -87,17 +86,17 @@ public class teleportpillager extends Item {
               sleeptimer = 1;
               return TypedActionResult.fail(itemStack);
             } else {
-              if (!user.world.getDimensionRegistryKey().getValue().toString()
-                  .equals(itemStack.getTag().getString("dimpos"))) {
+              if (!user.world.getDimension().getSuffix().equals(itemStack.getTag().getString("dimpos"))) {
                 falsedim = 1;
               } else
-                System.out.println("fail?");
-              return TypedActionResult.fail(itemStack);
+                // System.out.println("fail?");
+                return TypedActionResult.fail(itemStack);
             }
           }
         }
       }
     }
+    return TypedActionResult.fail(itemStack);
 
   }
 
@@ -106,7 +105,7 @@ public class teleportpillager extends Item {
     LivingEntity livingEntity = (LivingEntity) entity;
     PlayerEntity player = (PlayerEntity) livingEntity;
     CompoundTag tags = stack.getTag();
-    if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().teleportpillager) {
+    if (configinit.CONFIG.teleportpillager) {
       if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
           || slot == 8 && !world.isClient) {
         if (teleportcounter < 12000) {

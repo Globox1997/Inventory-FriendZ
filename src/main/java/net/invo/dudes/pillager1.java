@@ -3,8 +3,7 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
-import net.invo.config.friendconfig;
+import net.invo.inits.configinit;
 import net.invo.inits.soundinit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -31,7 +30,7 @@ public class pillager1 extends Item {
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
         tooltip.add(new TranslatableText("item.invo.pillager1.tooltip"));
-        if (!AutoConfig.getConfigHolder(friendconfig.class).getConfig().invisiblepillager) {
+        if (!configinit.CONFIG.invisiblepillager) {
             tooltip.add(new TranslatableText("item.invo.deactivated"));
         }
     }
@@ -40,7 +39,7 @@ public class pillager1 extends Item {
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         StatusEffectInstance invisib = new StatusEffectInstance(StatusEffect.byRawId(14), 5, 0, false, false);
         LivingEntity player = (LivingEntity) entity;
-        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().invisiblepillager) {
+        if (configinit.CONFIG.invisiblepillager) {
             if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
                     || slot == 8 && !world.isClient) {
                 count++;
@@ -90,7 +89,7 @@ public class pillager1 extends Item {
 
     @Override
     public boolean hasRecipeRemainder() {
-        if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().invisiblepillager) {
+        if (configinit.CONFIG.invisiblepillager) {
             return true;
         } else
             return false;

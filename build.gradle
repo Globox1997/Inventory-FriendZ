@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.4-SNAPSHOT'
+	id 'fabric-loom' version '0.5-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -10,27 +10,29 @@ archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
 
-minecraft {
-}
-
-repositories {
-    maven { url = "https://maven.fabricmc.net/" }
-    maven { url = "https://minecraft.curseforge.com/api/maven" }
-    maven { url = 'http://maven.sargunv.s3-website-us-west-2.amazonaws.com/' }
-		jcenter()
-}
-
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
     modCompile "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    modApi "me.shedaniel.cloth:config-2:${project.cloth_config_version}"
-		modCompile "me.sargunvohra.mcmods:autoconfig1u:${project.auto_config_version}"
-    include "me.shedaniel.cloth:config-2:${project.cloth_config_version}"
-    include "me.sargunvohra.mcmods:autoconfig1u:${project.auto_config_version}"
-		modImplementation "io.github.prospector:modmenu:${project.mod_menu_version}"
+    // Config
+	modApi("me.shedaniel.cloth:config-2:${project.cloth_config_version}") {
+      exclude(group: "net.fabricmc.fabric-api")
+  	}
+	include("me.shedaniel.cloth:config-2:${project.cloth_config_version}") {
+      exclude(group: "net.fabricmc.fabric-api")
+  	}
+	modApi("me.sargunvohra.mcmods:autoconfig1u:${project.auto_config_version}") {
+      exclude(group: "net.fabricmc.fabric-api")
+  	}
+	include("me.sargunvohra.mcmods:autoconfig1u:${project.auto_config_version}") {
+      exclude(group: "net.fabricmc.fabric-api")
+  	}
+	// Modmenu dev
+	modCompile "io.github.prospector:modmenu:${project.mod_menu_version}",{
+			exclude(group: "net.fabricmc.fabric-api")
+	}
 	
 }
 

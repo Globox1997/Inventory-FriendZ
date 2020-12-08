@@ -3,8 +3,7 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
-import net.invo.config.friendconfig;
+import net.invo.inits.configinit;
 import net.invo.inits.soundinit;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -45,7 +44,7 @@ public class orepillager extends Item {
     tooltip.add(new TranslatableText("item.invo.orepillager.tooltip2"));
     tooltip.add(new TranslatableText("item.invo.orepillager.tooltip3"));
     tooltip.add(new TranslatableText("item.invo.orepillager.tooltip4"));
-    if (!AutoConfig.getConfigHolder(friendconfig.class).getConfig().orepillager) {
+    if (!configinit.CONFIG.orepillager) {
       tooltip.add(new TranslatableText("item.invo.deactivated"));
     }
   }
@@ -127,7 +126,7 @@ public class orepillager extends Item {
     LivingEntity player = (LivingEntity) entity;
     PlayerEntity gamer = (PlayerEntity) player;
     BlockPos playerpos = new BlockPos(gamer.getBlockPos());
-    if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().orepillager) {
+    if (configinit.CONFIG.orepillager) {
       if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
           || slot == 8 && !world.isClient) {
         if (orechoose != 0) {

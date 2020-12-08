@@ -3,8 +3,7 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
-import net.invo.config.friendconfig;
+import net.invo.inits.configinit;
 import net.invo.inits.soundinit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -33,7 +32,7 @@ public class fireresistancetotem1 extends Item {
   public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
     tooltip.add(new TranslatableText("item.invo.fireresistancetotem1.tooltip"));
     tooltip.add(new TranslatableText("item.invo.fireresistancetotem1.tooltip2"));
-    if (!AutoConfig.getConfigHolder(friendconfig.class).getConfig().fireresistancetotem) {
+    if (!configinit.CONFIG.fireresistancetotem) {
       tooltip.add(new TranslatableText("item.invo.deactivated"));
     }
   }
@@ -56,7 +55,7 @@ public class fireresistancetotem1 extends Item {
     StatusEffectInstance fire = new StatusEffectInstance(StatusEffect.byRawId(12), 8, 0, false, false);
     StatusEffectInstance weak = new StatusEffectInstance(StatusEffect.byRawId(18), 8, 0, false, false);
     LivingEntity player = (LivingEntity) entity;
-    if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().fireresistancetotem) {
+    if (configinit.CONFIG.fireresistancetotem) {
       if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
           || slot == 8 && !world.isClient) {
         if (count != 0) {
@@ -88,7 +87,7 @@ public class fireresistancetotem1 extends Item {
 
   @Override
   public void onCraft(ItemStack stack, World world, PlayerEntity player) {
-    if (!AutoConfig.getConfigHolder(friendconfig.class).getConfig().fireresistancetotem) {
+    if (!configinit.CONFIG.fireresistancetotem) {
       if (!world.isClient) {
         stack.decrement(1);
       }

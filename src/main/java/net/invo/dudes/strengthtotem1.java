@@ -3,8 +3,7 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
-import net.invo.config.friendconfig;
+import net.invo.inits.configinit;
 import net.invo.inits.soundinit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -34,7 +33,7 @@ public class strengthtotem1 extends Item {
   public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
     tooltip.add(new TranslatableText("item.invo.strengthtotem1.tooltip"));
     tooltip.add(new TranslatableText("item.invo.strengthtotem1.tooltip2"));
-    if (!AutoConfig.getConfigHolder(friendconfig.class).getConfig().strengthtotem) {
+    if (!configinit.CONFIG.strengthtotem) {
       tooltip.add(new TranslatableText("item.invo.deactivated"));
     }
   }
@@ -57,7 +56,7 @@ public class strengthtotem1 extends Item {
     StatusEffectInstance strength = new StatusEffectInstance(StatusEffect.byRawId(5), 8, 0, false, false);
     StatusEffectInstance slow = new StatusEffectInstance(StatusEffect.byRawId(2), 8, 0, false, false);
     LivingEntity player = (LivingEntity) entity;
-    if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().strengthtotem) {
+    if (configinit.CONFIG.strengthtotem) {
       if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
           || slot == 8 && !world.isClient) {
         if (count != 0) {

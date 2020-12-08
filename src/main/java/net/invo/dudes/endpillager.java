@@ -3,8 +3,7 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
-import net.invo.config.friendconfig;
+import net.invo.inits.configinit;
 import net.invo.inits.soundinit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -30,7 +29,7 @@ public class endpillager extends Item {
   @Override
   public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
     tooltip.add(new TranslatableText("item.invo.endpillager.tooltip"));
-    if (!AutoConfig.getConfigHolder(friendconfig.class).getConfig().endpillager) {
+    if (!configinit.CONFIG.endpillager) {
       tooltip.add(new TranslatableText("item.invo.deactivated"));
     }
   }
@@ -41,7 +40,7 @@ public class endpillager extends Item {
     PlayerEntity gamer = (PlayerEntity) player;
     ItemStack nugget = new ItemStack(Items.GOLD_NUGGET);
     int nuggetslot = gamer.inventory.getSlotWithStack(nugget);
-    if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().endpillager) {
+    if (configinit.CONFIG.endpillager) {
       if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
           || slot == 8 && !world.isClient) {
         if (gamer.inventory.contains(nugget)) {
@@ -90,7 +89,7 @@ public class endpillager extends Item {
 
   @Override
   public void onCraft(ItemStack stack, World world, PlayerEntity player) {
-    if (!AutoConfig.getConfigHolder(friendconfig.class).getConfig().endpillager) {
+    if (!configinit.CONFIG.endpillager) {
       if (!world.isClient) {
         stack.decrement(1);
       }

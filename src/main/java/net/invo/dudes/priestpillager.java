@@ -3,8 +3,7 @@ package net.invo.dudes;
 import java.util.List;
 import java.util.Random;
 
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
-import net.invo.config.friendconfig;
+import net.invo.inits.configinit;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -32,8 +31,7 @@ public class priestpillager extends Item {
   public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
     tooltip.add(new TranslatableText("item.invo.priestpillager.tooltip"));
     tooltip.add(new TranslatableText("item.invo.priestpillager.tooltip2"));
-    tooltip.add(new TranslatableText("item.invo.priestpillager.tooltip3"));
-    if (!AutoConfig.getConfigHolder(friendconfig.class).getConfig().priestpillager) {
+    if (!configinit.CONFIG.priestpillager) {
       tooltip.add(new TranslatableText("item.invo.deactivated"));
     }
   }
@@ -54,7 +52,7 @@ public class priestpillager extends Item {
   }
 
   public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-    if (AutoConfig.getConfigHolder(friendconfig.class).getConfig().priestpillager) {
+    if (configinit.CONFIG.priestpillager) {
       if (slot == 0 || slot == 1 || slot == 2 || slot == 3 || slot == 4 || slot == 5 || slot == 6 || slot == 7
           || slot == 8) {
         if (lifegen < 4) {
